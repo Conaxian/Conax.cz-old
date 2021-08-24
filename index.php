@@ -11,6 +11,6 @@
     include "includes/head.php";
   ?>
   <body>
-    <p>Test</p>
+    <p>Coming soon</p>
   </body>
 </html>
