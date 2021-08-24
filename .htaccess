@@ -23,6 +23,11 @@ Options -Indexes
 # Prevent directory listing
 IndexIgnore *
 
+# Forbid access to files starting with `.`
+RewriteRule (^\.|/\.) - [F,L]
+# Forbid access to includes
+RewriteRule ^includes - [F,L]
+
 # Enable caching
 ExpiresActive On
 # Default expiration - 5 minutes

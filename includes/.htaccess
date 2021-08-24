@@ -1,3 +1,0 @@
-# Block all access to the directory
-Order allow, deny
-Deny from all

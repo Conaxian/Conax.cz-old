@@ -8,7 +8,7 @@
       "/stylesheets/style.css"
     );
     $scripts = array();
-    include $_SERVER["DOCUMENT_ROOT"] . "_/includes/head.php";
+    include "includes/head.php";
   ?>
   <body>
     <p>Test</p>
