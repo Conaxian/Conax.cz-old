@@ -13,7 +13,7 @@ RewriteRule ^(.*)$ $1.php
 
 # Redirects
 Redirect /conbot https://discord.com/api/oauth2/authorize?client_id=620175026972393472&permissions=8&scope=bot
-Redirect /osmium https://discord.com/api/oauth2/authorize?client_id=866703310350057482&permissions=8&scope=bot%20applications.commands
+Redirect /osmium https://discord.com/api/oauth2/authorize?client_id=866703310350057482&permissions=8&scope=bot+applications.commands
 
 # Set `index.html` & `index.php` as the default pages
 DirectoryIndex index.html index.php

@@ -1,3 +1,6 @@
+# Local files
+/local
+
 # PHP config file
 .user.ini
 
