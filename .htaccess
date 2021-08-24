@@ -28,6 +28,11 @@ RewriteRule (^\.|/\.) - [F,L]
 # Forbid access to includes
 RewriteRule ^includes - [F,L]
 
+# Set custom error pages
+ErrorDocument 403 /error.php
+ErrorDocument 404 /error.php
+ErrorDocument 500 /error.php
+
 # Enable caching
 ExpiresActive On
 # Default expiration - 5 minutes

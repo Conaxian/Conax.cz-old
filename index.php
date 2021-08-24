@@ -2,7 +2,7 @@
 <html lang="en">
   <?php
     $title = "Conax";
-    $desc = "The website of Conax";
+    $desc = "The Website of Conax";
     $keywords = "conax";
     $styles = array(
       "/stylesheets/style.css"
