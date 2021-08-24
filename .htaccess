@@ -1,0 +1,44 @@
+# Enable rewrite engine
+RewriteEngine On
+RewriteBase /
+
+# Enforce HTTPS
+RewriteCond %{ENV:HTTPS} !^.*on
+RewriteRule ^(.*)$ https://conax.cz/$1 [R,L]
+
+# Replace `.html` files with their `.php` counterparts
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+# Redirects
+Redirect /conbot https://discord.com/api/oauth2/authorize?client_id=620175026972393472&permissions=8&scope=bot
+Redirect /osmium https://discord.com/api/oauth2/authorize?client_id=866703310350057482&permissions=8&scope=bot%20applications.commands
+
+# Set `index.html` & `index.php` as the default pages
+DirectoryIndex index.html index.php
+
+# Disable directory browsing
+Options -Indexes
+# Prevent directory listing
+IndexIgnore *
+
+# Enable caching
+ExpiresActive On
+# Default expiration - 5 minutes
+ExpiresDefault A300
+# CSS and JS - 2 days
+ExpiresByType text/css               A172800
+ExpiresByType application/javascript A172800
+# Images - 1 year
+ExpiresByType image/gif    A31536000
+ExpiresByType image/jpeg   A31536000
+ExpiresByType image/png    A31536000
+ExpiresByType image/x-icon A31536000
+
+# Compression
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/javascript
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip
