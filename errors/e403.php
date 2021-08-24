@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <?php
-    $error = "403 Not Found";
+    $error = "403 Forbidden";
     include "../includes/errhead.php";
   ?>
   <body>
