@@ -1,0 +1,8 @@
+# Apache distributed config file
+.htaccess
+
+# Robots exclusion file
+robots.txt
+
+# VS Code workspace
+workspace.code-workspace
