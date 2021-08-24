@@ -28,7 +28,7 @@
   <!-- Styles -->
   <?php
   foreach ($styles as $style) {
-    echo('<link rel="stylesheet" href="' . $style . '">');
+    echo '<link rel="stylesheet" href="' . $style . '">';
   }
   unset($style);
   ?>
@@ -36,8 +36,8 @@
   <!-- Scripts -->
   <?php
   foreach ($scripts as $script) {
-    echo('<script type="application/javascript"
-    src="' . $script . '"></script>');
+    echo '<script type="application/javascript"
+    src="' . $script . '"></script>';
   }
   unset($script);
   ?>

@@ -4,5 +4,8 @@
 # Robots exclusion file
 robots.txt
 
+# PHP config file
+.user.ini
+
 # VS Code workspace
 workspace.code-workspace

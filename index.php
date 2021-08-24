@@ -8,13 +8,8 @@
       "/stylesheets/style.css"
     );
     $scripts = array();
-    include "/includes/head.php";
+    include $_SERVER["DOCUMENT_ROOT"] . "_/includes/head.php";
   ?>
-  <head>
-    <title>Conax's website</title>
-    <link rel="shortcut icon" type="image/png"
-    href="/images/favicon/favicon.png"/>
-  </head>
   <body>
     <p>Test</p>
   </body>
