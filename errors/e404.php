@@ -5,6 +5,6 @@
     include_once "../includes/errhead.php";
   ?>
   <body>
-    <h1><?php echo $error?></h1>
+    <h1><?php print $error?></h1>
   </body>
 </html>

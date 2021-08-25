@@ -4,10 +4,10 @@
     $title = "Conax";
     $desc = "The Website of Conax";
     $keywords = "conax";
-    $styles = array(
+    $styles = [
       "/stylesheets/style.css"
-    );
-    $scripts = array();
+    ];
+    $scripts = [];
     require_once "includes/head.php";
   ?>
   <body>

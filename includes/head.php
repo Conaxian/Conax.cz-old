@@ -6,10 +6,10 @@
   </script>
   <meta name="google-site-verification" content="po0dwLpIsRp5K7kWRuhNoTx2E3RpNfrVDVXFnzNrp2s">
 
-  <title><?php echo $title;?></title>
+  <title><?php print $title;?></title>
   <meta charset="utf-8">
-  <meta name="description" content="<?php echo $desc;?>">
-  <meta name="keywords" content="<?php echo $keywords;?>">
+  <meta name="description" content="<?php print $desc;?>">
+  <meta name="keywords" content="<?php print $keywords;?>">
   <meta name="author" content="Conax">
   <meta name="robots" content="all">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +19,12 @@
 
   <?php
   foreach ($styles as $style) {
-    echo '<link rel="stylesheet" href="' . $style . '">';
+    print '<link rel="stylesheet" href="' . $style . '">';
   }
   unset($style);
 
   foreach ($scripts as $script) {
-    echo '<script type="application/javascript"
+    print '<script type="application/javascript"
     src="' . $script . '"></script>';
   }
   unset($script);
