@@ -38,7 +38,7 @@
         "as_code" => $data["as"],
         "mobile" => $data["mobile"],
         "proxy" => $data["proxy"],
-        "hosting" => $data["hosting"],
+        "hosting" => $data["hosting"]
       ];
     }
 
@@ -61,7 +61,7 @@
       "referer" => $_SERVER["HTTP_REFERER"] ?? null,
       "user" => $_SERVER["REMOTE_USER"] ?? null
     ];
-    return array_merge($ipdata, $miscdata);
+    return array_merge($ipdata, $miscdata, ["a" => $_SERVER["SERVER_SOFTWARE"]]);
   }
 
   $userdata = get_user_data();
