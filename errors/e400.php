@@ -2,7 +2,7 @@
 <html lang="en">
   <?php
     $error = "400 Bad Request";
-    include "../includes/errhead.php";
+    include_once "../includes/errhead.php";
   ?>
   <body>
     <h1><?php echo $error?></h1>

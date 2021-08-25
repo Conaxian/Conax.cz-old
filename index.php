@@ -8,7 +8,7 @@
       "/stylesheets/style.css"
     );
     $scripts = array();
-    include "includes/head.php";
+    require_once "includes/head.php";
   ?>
   <body>
 
