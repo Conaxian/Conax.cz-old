@@ -2,11 +2,12 @@
 RewriteEngine On
 RewriteBase /
 
-# Enforce HTTPS
+# Force HTTPS
 RewriteCond %{ENV:HTTPS} !^.*on
 RewriteRule ^(.*)$ https://conax.cz/$1 [R,L]
 
-# Replace `.html` files with their `.php` counterparts
+# Automatically add the `.php` extension to a filename if the type is ambiguous
+# and a PHP file with the same name exists
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php
@@ -15,8 +16,8 @@ RewriteRule ^(.*)$ $1.php
 Redirect /conbot https://discord.com/api/oauth2/authorize?client_id=620175026972393472&permissions=8&scope=bot
 Redirect /osmium https://discord.com/api/oauth2/authorize?client_id=866703310350057482&permissions=8&scope=bot+applications.commands
 
-# Set `index.html` & `index.php` as the default pages
-DirectoryIndex index.html index.php
+# Set `index.php` as the default page
+DirectoryIndex index.php
 
 # Disable directory browsing
 Options -Indexes
@@ -25,8 +26,9 @@ IndexIgnore *
 
 # Forbid access to files starting with `.`
 RewriteRule (^\.|/\.) - [F,L]
-# Forbid access to includes
+# Forbid access to secret directories
 RewriteRule ^includes - [F,L]
+RewriteRule ^logs - [F,L]
 
 # Set custom client error pages
 ErrorDocument 400 /errors/e400.php
