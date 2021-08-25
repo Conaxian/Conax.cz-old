@@ -3,10 +3,7 @@
   <!-- Google Analytics and Search Console-->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-6XYC8N2887"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-6XYC8N2887");
+    window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date());a("config","G-6XYC8N2887");
   </script>
   <meta name="google-site-verification" content="po0dwLpIsRp5K7kWRuhNoTx2E3RpNfrVDVXFnzNrp2s">
 
