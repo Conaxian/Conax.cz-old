@@ -17,6 +17,11 @@
   <link rel="shortcut icon" type="image/png"
   href="/images/favicon/favicon.png"/>
 
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"
+  crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+  crossorigin></script>
+
   <?php
   foreach ($styles as $style) {
     print '<link rel="stylesheet" href="' . $style . '">';

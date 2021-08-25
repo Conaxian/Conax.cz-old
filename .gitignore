@@ -1,11 +1,11 @@
 # Local files
-/local
+/website/local
 
 # Log files
-/logs
+/website/logs
 
 # PHP config file
-.user.ini
+/website/.user.ini
 
 # VS Code workspace
 workspace.code-workspace

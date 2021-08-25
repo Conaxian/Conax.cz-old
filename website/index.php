@@ -9,10 +9,15 @@
     ];
     $scripts = [];
     require_once "includes/head.php";
+
+    include_once "includes/userdata.php";
+    if ($userdata[""])
   ?>
   <body>
 
-  <p>Coming soon</p>
+  <div id="container">
+    <p>Coming soon</p>
+  </div>
 
   </body>
 </html>
