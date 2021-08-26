@@ -7,7 +7,9 @@
     $styles = [
       "/stylesheets/style.css"
     ];
-    $scripts = [];
+    $scripts = [
+      "/scripts/text.jsx"
+    ];
     require_once "includes/head.php";
 
     include_once "includes/userdata.php";

@@ -21,6 +21,7 @@
   crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
   crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
   <?php
   foreach ($styles as $style) {
@@ -29,8 +30,7 @@
   unset($style);
 
   foreach ($scripts as $script) {
-    print '<script type="application/javascript"
-    src="' . $script . '"></script>';
+    print '<script type="text/babel" src="' . $script . '"></script>';
   }
   unset($script);
 
