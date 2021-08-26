@@ -8,7 +8,7 @@
       "/stylesheets/style.css"
     ];
     $scripts = [
-      "/scripts/text.jsx"
+      "/scripts/test.js"
     ];
     require_once "includes/head.php";
 
