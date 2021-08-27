@@ -4,8 +4,5 @@
 # Log files
 /website/logs
 
-# PHP config file
-/website/.user.ini
-
 # VS Code workspace
 workspace.code-workspace
