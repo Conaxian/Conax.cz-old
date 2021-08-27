@@ -2,7 +2,29 @@
 /local
 
 # Log files
-/website/logs
+/app/public/logs
 
 # VS Code workspace
 workspace.code-workspace
+
+# Dependencies
+/app/node_modules
+/app/.pnp
+/app/.pnp.js
+
+# Testing
+/app/coverage
+
+# Production
+/app/build
+
+# Misc
+/app/.DS_Store
+/app/.env.local
+/app/.env.development.local
+/app/.env.test.local
+/app/.env.production.local
+
+/app/npm-debug.log*
+/app/yarn-debug.log*
+/app/yarn-error.log*

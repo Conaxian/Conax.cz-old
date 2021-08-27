@@ -14,7 +14,8 @@
   ?>
   <body>
 
-  <div id="container">
+  <noscript>This website requires JavaScript to function.</noscript>
+  <div id="root">
     <p>Coming soon</p>
   </div>
 

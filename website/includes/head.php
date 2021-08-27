@@ -10,14 +10,17 @@
 
   <title><?php print $title;?></title>
   <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="description" content="<?php print $desc;?>">
   <meta name="keywords" content="<?php print $keywords;?>">
   <meta name="author" content="Conax">
   <meta name="robots" content="all">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
 
-  <link rel="shortcut icon" type="image/png"
-  href="/images/favicon/favicon.png"/>
+  <link rel="icon" href="%PUBLIC_URL%/images/favicon/favicon.png">
+  <línk rel="apple-touch-icon" href="%PUBLIC_URL%/images/favicon/logo192.png">
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
 
   <script src="https://unpkg.com/react@17/umd/react.development.js"
   crossorigin></script>
