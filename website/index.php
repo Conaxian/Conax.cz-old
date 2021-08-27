@@ -11,9 +11,6 @@
       "/scripts/test.js"
     ];
     require_once "includes/head.php";
-
-    include_once "includes/userdata.php";
-    if ($userdata[""])
   ?>
   <body>
 
