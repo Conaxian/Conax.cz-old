@@ -2,7 +2,7 @@
 /local
 
 # Log files
-/app/public/logs
+/app/website/logs
 
 # VS Code workspace
 workspace.code-workspace

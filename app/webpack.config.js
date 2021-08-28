@@ -3,7 +3,7 @@ const path = require("path/posix");
 module.exports = {
   entry: path.join(__dirname, "src", "index.jsx"),
   output: {
-    path: path.resolve(__dirname, "..", "website", "scripts"),
+    path: path.join(__dirname, "website", "scripts"),
     filename: "[name].bundle.js"
   },
   module: {

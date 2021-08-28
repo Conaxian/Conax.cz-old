@@ -22,11 +22,6 @@
   <línk rel="apple-touch-icon" href="%PUBLIC_URL%/images/favicon/logo192.png">
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
 
-  <script src="https://unpkg.com/react@17/umd/react.development.js"
-  crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-  crossorigin></script>
-
   <?php
   foreach ($styles as $style) {
     print '<link rel="stylesheet" href="' . $style . '">';
