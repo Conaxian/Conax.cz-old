@@ -4,11 +4,9 @@
     $title = "Conax";
     $desc = "The Website of Conax";
     $keywords = "conax";
-    $styles = [
-      "/stylesheets/style.css"
-    ];
+    $styles = [];
     $scripts = [
-      "/scripts/test.js"
+      "/scripts/main.bundle.js"
     ];
     require_once "includes/head.php";
   ?>
@@ -16,7 +14,6 @@
 
   <noscript>This website requires JavaScript to function.</noscript>
   <div id="root">
-    <p>Coming soon</p>
   </div>
 
   </body>

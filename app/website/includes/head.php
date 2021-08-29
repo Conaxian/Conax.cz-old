@@ -18,9 +18,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#000000">
 
-  <link rel="icon" href="%PUBLIC_URL%/images/favicon/favicon.png">
-  <línk rel="apple-touch-icon" href="%PUBLIC_URL%/images/favicon/logo192.png">
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="icon" href="/images/icons/favicon.png">
+  <línk rel="apple-touch-icon" href="/images/icons/icon192.png">
+  <link rel="manifest" href="/manifest.json">
 
   <?php
   foreach ($styles as $style) {
