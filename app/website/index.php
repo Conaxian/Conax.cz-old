@@ -6,7 +6,7 @@
     $keywords = "conax";
     $styles = [];
     $scripts = [
-      "/scripts/main.bundle.js"
+      "/scripts/main.js"
     ];
     require_once "includes/head.php";
   ?>

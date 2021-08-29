@@ -21,6 +21,11 @@
   <link rel="icon" href="/images/icons/favicon.png">
   <línk rel="apple-touch-icon" href="/images/icons/icon192.png">
   <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css
+  ?family=Roboto:300,400,500,700&display=swap"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon
+  ?family=Material+Icons"/>
 
   <?php
   foreach ($styles as $style) {
