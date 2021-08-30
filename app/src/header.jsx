@@ -2,6 +2,7 @@ import React from "react";
 import {
   AppBar,
   Toolbar,
+  Button,
   IconButton,
   Typography,
   makeStyles
@@ -18,6 +19,10 @@ const styles = theme => ({
   },
   title: {
     flexGrow: 1
+  },
+  button: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1)
   }
 });
 
@@ -35,6 +40,12 @@ class Header extends React.Component {
             <Typography className={classes.title} variant="h6" noWrap>
               Conax
             </Typography>
+            <Button className={classes.button}>
+              Home
+            </Button>
+            <Button className={classes.button}>
+              About
+            </Button>
           </Toolbar>
         </AppBar>
         <Toolbar />
@@ -43,4 +54,4 @@ class Header extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Header);
+export default withStyles(styles)(Header);
