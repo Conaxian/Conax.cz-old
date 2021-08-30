@@ -1,13 +1,24 @@
 import React from "react";
-import { AppBar, Toolbar } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  IconButton
+} from "@material-ui/core";
+import { Menu as MenuIcon } from "@material-ui/icons";
 
 class Header extends React.Component {
   render() {
     return (
-      <AppBar position="static">
-        <Toolbar>
-        </Toolbar>
-      </AppBar>
+      <>
+        <AppBar position="fixed">
+          <Toolbar>
+            <IconButton edge="start" aria-label="menu">
+              <MenuIcon/>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <Toolbar/>
+      </>
     );
   }
 }

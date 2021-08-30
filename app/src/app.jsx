@@ -4,9 +4,9 @@ import Header from "./header.jsx";
 class App extends React.Component {
   render() {
     return (
-    <div className="app">
-      <Header/>
-    </div>
+      <div className="app">
+        <Header/>
+      </div>
     );
   }
 }
