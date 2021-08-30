@@ -1,7 +1,7 @@
 import React from "react";
 import { createTheme } from "@material-ui/core";
 import {
-  lightBlue,
+  blue,
   amber,
   blueGrey
 } from "@material-ui/core/colors";
@@ -9,7 +9,7 @@ import {
 const theme = createTheme({
   palette: {
     primary: {
-      main: lightBlue[500],
+      main: blue[500],
       contrastText: blueGrey[900]
     },
     secondary: {
