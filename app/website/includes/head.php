@@ -22,11 +22,13 @@
   <link rel="icon" href="/images/icons/favicon.png">
   <línk rel="apple-touch-icon" href="/images/icons/icon192.png">
   <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css
-  ?family=Roboto:300,400,500,700&display=swap"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+  rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon
-  ?family=Material+Icons"/>
+?family=Material+Icons">
 
   <script type="application/javascript" src="/scripts/main.js"></script>
   <?php include "log.php"; ?>

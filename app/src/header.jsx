@@ -13,11 +13,11 @@ class Header extends React.Component {
         <AppBar position="fixed">
           <Toolbar>
             <IconButton edge="start" aria-label="menu">
-              <MenuIcon/>
+              <MenuIcon />
             </IconButton>
           </Toolbar>
         </AppBar>
-        <Toolbar/>
+        <Toolbar />
       </>
     );
   }

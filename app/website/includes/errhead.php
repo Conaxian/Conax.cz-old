@@ -8,6 +8,6 @@
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png"
-  href="/images/icons/favicon.png"/>
+  href="/images/icons/favicon.png">
 
 </head>
