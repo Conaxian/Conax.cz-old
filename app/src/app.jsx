@@ -1,11 +1,11 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import Header from "./header.jsx";
 
 class App extends React.Component {
   render() {
     return (
     <div className="app">
-      <Button color="primary">Testing</Button>
+      <Header/>
     </div>
     );
   }
