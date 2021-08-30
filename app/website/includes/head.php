@@ -28,19 +28,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon
   ?family=Material+Icons"/>
 
-  <?php
-  foreach ($styles as $style) {
-    print '<link rel="stylesheet" href="' . $style . '">';
-  }
-  unset($style);
-
-  foreach ($scripts as $script) {
-    print '<script type="application/javascript"
-    src="' . $script . '"></script>';
-  }
-  unset($script);
-
-  include "log.php";
-  ?>
+  <script type="application/javascript" src="/scripts/main.js"></script>
+  <?php include "log.php"; ?>
 
 </head>
