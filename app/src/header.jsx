@@ -7,9 +7,9 @@ import {
   makeStyles
 } from "@material-ui/core";
 import { Menu as MenuIcon } from "@material-ui/icons";
-import theme from "./theme.jsx";
+import { withStyles } from "@material-ui/core/styles";
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1
   },
@@ -17,22 +17,22 @@ const styles = {
     marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1,
-    display: "none"
+    flexGrow: 1
   }
-};
+});
 
 class Header extends React.Component {
   render() {
+    const { classes } = this.props;
     return (
       <>
-        <AppBar position="fixed" className={styles.root}>
+        <AppBar position="fixed" className={classes.root}>
           <Toolbar>
-            <IconButton edge="start" classNmae={styles.menuButton}
+            <IconButton edge="start" className={classes.menuButton}
             aria-label="menu">
               <MenuIcon />
             </IconButton>
-            <Typography className={styles.title} variant="h1">
+            <Typography className={classes.title} variant="h6" noWrap>
               Conax
             </Typography>
           </Toolbar>
@@ -43,4 +43,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default withStyles(styles, { withTheme: true })(Header);

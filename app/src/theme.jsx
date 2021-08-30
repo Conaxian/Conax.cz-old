@@ -6,7 +6,7 @@ import {
   blueGrey
 } from "@material-ui/core/colors";
 
-const theme = createTheme({
+export default createTheme({
   palette: {
     primary: {
       main: blue[500],
@@ -22,7 +22,6 @@ const theme = createTheme({
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
-      '"Open Sans"',
       "Roboto",
       '"Helvetica Neue"',
       "Arial",
@@ -33,5 +32,3 @@ const theme = createTheme({
     ].join(",")
   }
 });
-
-export default theme;
