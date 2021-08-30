@@ -4,6 +4,9 @@
 # Log files
 /app/website/logs
 
+# Webpack output scripts
+/app/website/scripts/*
+
 # VS Code workspace
 workspace.code-workspace
 
