@@ -33,10 +33,11 @@ class Header extends React.Component {
       <>
         <AppBar position="fixed" className={classes.root}>
           <Toolbar>
+            { this.props.hasMenu == "true" &&
             <IconButton edge="start" className={classes.menuButton}
             aria-label="menu">
               <MenuIcon />
-            </IconButton>
+            </IconButton> }
             <Typography className={classes.title} variant="h6" noWrap>
               Conax
             </Typography>
