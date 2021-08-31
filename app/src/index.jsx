@@ -4,9 +4,11 @@ import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import App from "./app.jsx";
 import theme from "./theme.jsx";
 import pages from "./page-data";
+import { fixPathname } from "./utils.js";
 
-const pageData = pages[window.location.pathname];
-console.assert(pageData, "Page data not found");
+const pathName = fixPathname(window.location.pathname);
+const pageData = pages[pathName];
+console.assert(pageData, `Page data not found: ${pathName}`);
 
 window.onload = () => {
   ReactDOM.render(
