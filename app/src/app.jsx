@@ -6,7 +6,7 @@ class App extends React.Component {
     const pageData = this.props.pageData;
     return (
       <div className="app">
-        <Header hasMenu={pageData.hasMenu} />
+        <Header hasSidebar={pageData.hasSidebar} />
       </div>
     );
   }

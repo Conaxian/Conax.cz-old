@@ -3,19 +3,14 @@ import {
   AppBar,
   Toolbar,
   Button,
-  IconButton,
-  Typography,
-  makeStyles
+  Typography
 } from "@material-ui/core";
-import { Menu as MenuIcon } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core/styles";
+import Sidebar from "./sidebar.jsx";
 
 const styles = theme => ({
   root: {
     flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
   },
   title: {
     flexGrow: 1
@@ -33,11 +28,7 @@ class Header extends React.Component {
       <>
         <AppBar position="fixed" className={classes.root}>
           <Toolbar>
-            { this.props.hasMenu &&
-            <IconButton edge="start" className={classes.menuButton}
-            aria-label="menu">
-              <MenuIcon />
-            </IconButton> }
+            { this.props.hasSidebar && <Sidebar /> }
             <Typography className={classes.title} variant="h6" noWrap>
               Conax
             </Typography>
