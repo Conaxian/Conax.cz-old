@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import App from "./app.jsx";
 import theme from "./theme.jsx";
-import pages from "./pages.json";
+import pages from "./page-data";
 
 const pageData = pages[window.location.pathname];
 console.assert(pageData, "Page data not found");
