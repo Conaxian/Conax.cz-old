@@ -1,3 +1,5 @@
+"use strict";
+
 import React from "react";
 import { IconButton } from "@material-ui/core";
 import { Menu as MenuIcon } from "@material-ui/icons";

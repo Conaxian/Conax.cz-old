@@ -1,3 +1,5 @@
+"use strict";
+
 class PageData {
   constructor(data) {
     Object.assign(this, data);
