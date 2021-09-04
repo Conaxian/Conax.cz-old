@@ -3,7 +3,7 @@
 import React from "react";
 import { SwipeableDrawer } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import MenuButton from "./menu-button.jsx";
+import MenuButton from "./header-parts/menu.jsx";
 
 const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 

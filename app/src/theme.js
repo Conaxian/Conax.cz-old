@@ -1,22 +1,20 @@
 "use strict";
 
-import React from "react";
 import { createTheme } from "@material-ui/core";
-import {
-  blue,
-  amber,
-  blueGrey
-} from "@material-ui/core/colors";
 
 export default createTheme({
   palette: {
     primary: {
-      main: blue[500],
-      contrastText: blueGrey[900]
+      main: "#4c4c53"
     },
     secondary: {
-      main: amber[500],
-      contrastText: blueGrey[900]
+      main: "#ff00ff"
+    },
+    background: {
+      default: "#ffffff"
+    },
+    action: {
+      active: "#393b41"
     }
   },
 
@@ -24,7 +22,7 @@ export default createTheme({
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
-      "Roboto",
+      '"Encode Sans"',
       '"Helvetica Neue"',
       "Arial",
       "sans-serif",

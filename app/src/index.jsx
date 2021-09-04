@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import App from "./app.jsx";
-import theme from "./theme.jsx";
+import theme from "./theme.js";
 import pages from "./page-data";
 import { fixPathname } from "./utils.js";
 
