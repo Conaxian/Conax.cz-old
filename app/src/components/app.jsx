@@ -9,6 +9,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Header hasSidebar={pageData.hasSidebar} />
+        {pageData.page}
       </div>
     );
   }
