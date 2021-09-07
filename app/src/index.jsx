@@ -3,10 +3,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
-import App from "./app.jsx";
-import theme from "./theme.js";
-import pages from "./page-data";
-import { fixPathname } from "./utils.js";
+import App from "./components/app.jsx";
+import theme from "./common/theme.js";
+import pages from "./common/page-data";
+import { fixPathname } from "./common/utils.js";
 
 const pathName = fixPathname(window.location.pathname);
 const pageData = pages[pathName];

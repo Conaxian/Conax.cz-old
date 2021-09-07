@@ -20,7 +20,7 @@ class Sidebar extends React.Component {
   }
 
   toggleShow(open) {
-    return (state) => {
+    return state => {
       this.setState({shown: open});
     }
   }
