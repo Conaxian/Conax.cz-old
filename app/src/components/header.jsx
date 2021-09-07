@@ -9,7 +9,7 @@ import AboutButton from "./header-parts/about.jsx";
 import Sidebar from "./sidebar.jsx";
 
 const styles = theme => ({
-  appBar: {
+  root: {
     flexGrow: 1
   }
 });
@@ -19,7 +19,7 @@ class Header extends React.Component {
     const { classes } = this.props;
     return (
       <>
-        <AppBar position="fixed" className={classes.appBar}>
+        <AppBar position="fixed" className={classes.root}>
           <Toolbar>
             { this.props.hasSidebar && <Sidebar /> }
             <TitleText />
