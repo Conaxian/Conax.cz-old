@@ -4,7 +4,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import App from "./App";
 import theme from "./common/theme";
 
-window.onload = () => {
+function load() {
   ReactDOM.render(
     <React.StrictMode>
       <ThemeProvider theme={theme}>
@@ -14,4 +14,14 @@ window.onload = () => {
     </React.StrictMode>,
     document.getElementById("root"),
   );
-};
+}
+
+declare global {
+  interface Window { conax: Conax; }
+}
+
+interface Conax {
+  load: () => void;
+}
+
+window.conax = { load };

@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 const ROUTES = [
-  "/" => "HomeControl",
+  "/" => "Home",
 ];
 
 class Router extends Controller {
@@ -11,7 +11,7 @@ class Router extends Controller {
     $path = $this->parseUrl($args[0]);
     $route = "/" . array_shift($path);
     $controllerName = array_key_exists($route, ROUTES)
-    ? ROUTES[$route] : "ErrorControl";
+    ? ROUTES[$route] . "Control" : "ErrorControl";
 
     $this->controller = new $controllerName;
     $this->controller->process($path);
