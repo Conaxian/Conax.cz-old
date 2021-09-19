@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
 const ROUTES = [
-  "/^(home)?$/" => "Home",
-  "/^conbot|osmium$/" => "Redirect",
+  "/^(home)?$/i" => "Home",
+  "/^conbot|osmium$/i" => "Redirect",
 ];
 
 class Router extends Controller {

@@ -1,17 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { StrictMode } from "react";
+import { render as renderDOM } from "react-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import App from "./App";
 import theme from "./common/theme";
 
 function load() {
-  ReactDOM.render(
-    <React.StrictMode>
-      <ThemeProvider theme={theme}>
+  renderDOM(
+    <StrictMode>
+      <ThemeProvider theme={ theme }>
         <CssBaseline />
         <App />
       </ThemeProvider>
-    </React.StrictMode>,
+    </StrictMode>,
     document.getElementById("root"),
   );
 }

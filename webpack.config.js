@@ -1,10 +1,10 @@
 const path = require("path/posix");
 
 module.exports = {
-  entry: path.join(__dirname, "src", "index.tsx"),
+  entry: path.join(__dirname, "src", "main.tsx"),
   output: {
     path: path.join(__dirname, "web", "app"),
-    filename: "main.bundle.js",
+    filename: "[name].bundle.js",
   },
   mode: process.env.NODE_ENV || "development",
   resolve: {

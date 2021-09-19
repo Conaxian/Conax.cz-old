@@ -1,13 +1,14 @@
-import React from "react";
+import { Component as ReactComponent } from "react";
 import { AppBar, Toolbar } from "@mui/material";
+import Sidebar from "./Sidebar";
 
-class Header extends React.Component {
+class Header extends ReactComponent {
   render() {
     return (
       <>
         <AppBar position="fixed" sx={{ flexGrow: 1 }}>
           <Toolbar>
-            <p>Testing</p>
+            <Sidebar />
           </Toolbar>
         </AppBar>
         <Toolbar />
