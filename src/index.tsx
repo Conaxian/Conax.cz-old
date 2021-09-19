@@ -17,11 +17,11 @@ function load() {
 }
 
 declare global {
-  interface Window { conax: Conax; }
+  interface Window { appGlobal: AppGlobal; }
 }
 
-interface Conax {
+interface AppGlobal {
   load: () => void;
 }
 
-window.conax = { load };
+window.appGlobal = { load };

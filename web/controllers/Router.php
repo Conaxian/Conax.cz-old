@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 const ROUTES = [
-  "/" => "Home",
+  "/^\/(home)?$/" => "Home",
 ];
 
 class Router extends Controller {
@@ -10,8 +10,12 @@ class Router extends Controller {
   public function process(array $args) {
     $path = $this->parseUrl($args[0]);
     $route = "/" . array_shift($path);
-    $controllerName = array_key_exists($route, ROUTES)
-    ? ROUTES[$route] . "Control" : "ErrorControl";
+    foreach (ROUTES as $key => $value) {
+      if (preg_match($key, $route)) {
+        $controllerName = $value . "Control";
+      }
+    }
+    $controllerName ??= "ErrorControl";
 
     $this->controller = new $controllerName;
     $this->controller->process($path);

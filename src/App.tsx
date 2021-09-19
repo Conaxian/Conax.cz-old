@@ -1,12 +1,12 @@
 import React from "react";
-import Button from "@mui/material/Button";
+import Header from "./components/Header";
 
 class App extends React.Component {
   render() {
     return (
-      <Button variant="contained">
-        Hello World
-      </Button>
+      <div className="app">
+        <Header />
+      </div>
     );
   }
 }
