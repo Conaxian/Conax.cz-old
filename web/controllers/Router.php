@@ -27,11 +27,7 @@ class Router extends Controller {
     $this->data["keywords"] = $this->controller->head["keywords"];
     $this->data["description"] = $this->controller->head["description"];
 
-    if ($controllerName !== "ErrorControl") {
-      $this->view = "base";
-    } else {
-      $this->view = "error";
-    }
+    $this->view = $controllerName !== "ErrorControl" ? "base" : "error";
   }
 
   private function parseUrl(string $url) {

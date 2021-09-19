@@ -1,4 +1,4 @@
-import { Component as ReactComponent } from "react";
+import { Component } from "react";
 import { Box, SwipeableDrawer } from "@mui/material";
 import MenuButton from "./MenuButton";
 
@@ -8,7 +8,7 @@ interface State {
   shown: boolean,
 }
 
-class Sidebar extends ReactComponent {
+class Sidebar extends Component {
   state: Readonly<State>;
 
   constructor(props: object) {

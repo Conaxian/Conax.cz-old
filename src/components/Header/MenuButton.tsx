@@ -1,4 +1,4 @@
-import { Component as ReactComponent, MouseEventHandler } from "react";
+import { Component, MouseEventHandler } from "react";
 import { IconButton } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 
@@ -6,7 +6,7 @@ interface Props {
   onClick: MouseEventHandler,
 }
 
-class MenuButton extends ReactComponent {
+class MenuButton extends Component {
   props!: Props;
 
   render() {

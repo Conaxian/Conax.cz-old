@@ -1,11 +1,18 @@
-import { Component as ReactComponent } from "react";
+import { Component } from "react";
 import Header from "./components/Header";
 
-class App extends ReactComponent {
+interface Props {
+  page: JSX.Element,
+}
+
+class App extends Component {
+  props!: Props;
+
   render() {
     return (
       <div className="app">
         <Header />
+        { this.props.page }
       </div>
     );
   }
