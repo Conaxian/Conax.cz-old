@@ -13,7 +13,9 @@ function autoload(string $class) {
 spl_autoload_register("autoload");
 
 $router = new Router();
-$router->process([$_SERVER["REQUEST_URI"]]);
+$router->process([
+  "url" => $_SERVER["REQUEST_URI"],
+]);
 $router->showView();
 
 ?>
