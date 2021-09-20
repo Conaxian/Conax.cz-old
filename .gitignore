@@ -5,6 +5,10 @@
 /web/data
 /web/content
 
+# Backwards compatibility
+/web/osm
+/web/cbfiles
+
 # Dependencies
 /node_modules
 /.pnp
