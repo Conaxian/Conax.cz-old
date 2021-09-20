@@ -3,39 +3,58 @@
 const ROUTES = [
   "/^(home)?$/i" => "Home",
   "/^conbot|osmium$/i" => "Redirect",
+  "/^a\/[0-9A-Za-z-=]{4}$/i" => "ShortUrl",
 ];
 
 class Router extends Controller {
   protected Controller $controller;
 
+  private function parseUrl(string $url) {
+    $url = parse_url($url);
+    $path = trim($url["path"], "/");
+    $path = trim($path);
+    return $path;
+  }
+
   public function process(array $args) {
     $path = $this->parseUrl($args["url"]);
-    $route = array_shift($path);
-    foreach (ROUTES as $key => $value) {
-      if (preg_match($key, $route)) {
+    foreach (ROUTES as $route => $value) {
+      if (preg_match($route, $path)) {
         $controllerName = $value . "Control";
       }
     }
-    $controllerName ??= "ErrorControl";
+
+    if (!$controllerName) {
+      $this->error(404);
+      return;
+    }
 
     $this->controller = new $controllerName;
     $this->controller->process([
       "path" => $path,
     ]);
 
+    if ($this->controller->error) {
+      $this->error($this->controller->error);
+      return;
+    }
+
     $this->data["title"] = $this->controller->head["title"];
     $this->data["keywords"] = $this->controller->head["keywords"];
     $this->data["description"] = $this->controller->head["description"];
+    $this->view = "base";
 
-    $this->view = $controllerName !== "ErrorControl" ? "base" : "error";
+    $log = new LogMod();
+    $log->logUser($args);
   }
 
-  private function parseUrl(string $url) {
-    $url = parse_url($url);
-    $url["path"] = ltrim($url["path"], "/");
-    $url["path"] = trim($url["path"]);
-    $path = explode("/", $url["path"]);
-    return $path;
+  public function error(int $code) {
+    $this->controller = new ErrorControl();
+    $this->controller->process([
+      "code" => $code,
+    ]);
+    $this->data["title"] = $this->controller->head["title"];
+    $this->view = "error";
   }
 }
 

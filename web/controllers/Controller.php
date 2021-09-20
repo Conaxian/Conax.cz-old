@@ -8,6 +8,7 @@ abstract class Controller {
     "keywords" => "",
     "description" => "",
   ];
+  protected $error = 0;
 
   abstract function process(array $args);
 

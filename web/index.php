@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+mb_internal_encoding("UTF-8");
+
 function autoload(string $class) {
   if (preg_match("/Mod$/", $class)) {
     $class = preg_replace("/Mod$/", "", $class);
@@ -12,10 +14,21 @@ function autoload(string $class) {
 
 spl_autoload_register("autoload");
 
+$ipInfoMod = new IpInfoMod();
+$ipInfo = $ipInfoMod->getIpInfo($_SERVER["REMOTE_ADDR"]);
+
 $router = new Router();
-$router->process([
-  "url" => $_SERVER["REQUEST_URI"],
-]);
+try {
+  $router->process([
+    "url" => $_SERVER["REQUEST_URI"],
+    "ipInfo" => $ipInfo,
+    "method" => $_SERVER["REQUEST_METHOD"],
+    "userAgent" => $_SERVER["HTTP_USER_AGENT"],
+    "referer" => $_SERVER["HTTP_REFERER"],
+  ]);
+} catch (Error) {
+  $router->error(500);
+}
 $router->showView();
 
 ?>
