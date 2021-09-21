@@ -14,7 +14,8 @@ class HomePage extends Component {
           textAlign: "center",
           fontSize: "calc(1.5vw + 0.5rem)",
         }}>
-          <h1>My name is Conax.</h1>
+          <h1>Let's be honest</h1>
+          <p>This website will never be finished</p>
         </Grid>
       </Grid>
     );

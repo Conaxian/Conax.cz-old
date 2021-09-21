@@ -4,6 +4,7 @@ const ROUTES = [
   "/^(home)?$/i" => "Home",
   "/^conbot|osmium$/i" => "Redirect",
   "/^a\/[0-9A-Za-z-=]{4}$/i" => "ShortUrl",
+  "/^api\/shorten$/i" => "ShortenApi",
 ];
 
 class Router extends Controller {
@@ -13,11 +14,19 @@ class Router extends Controller {
     $url = parse_url($url);
     $path = trim($url["path"], "/");
     $path = trim($path);
-    return $path;
+    $query = trim($url["query"] ?? "");
+    $fragment = trim($url["fragment"] ?? "");
+
+    return [
+      "path" => $path,
+      "query" => $query,
+      "fragment" => $fragment,
+    ];
   }
 
   public function process(array $args) {
-    $path = $this->parseUrl($args["url"]);
+    $url = $this->parseUrl($args["url"]);
+    $path = $url["path"];
     foreach (ROUTES as $route => $value) {
       if (preg_match($route, $path)) {
         $controllerName = $value . "Control";
@@ -32,6 +41,7 @@ class Router extends Controller {
     $this->controller = new $controllerName;
     $this->controller->process([
       "path" => $path,
+      "url" => $url,
     ]);
 
     if ($this->controller->error) {

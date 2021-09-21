@@ -4,6 +4,7 @@ class ErrorControl extends Controller {
   public function process(array $args) {
     $code = $args["code"];
     $details = [
+      400 => "Bad Request",
       404 => "Not Found",
       500 => "Internal Server Error",
     ][$code];

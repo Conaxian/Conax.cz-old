@@ -19,6 +19,8 @@ class ShortUrlMod {
     while (array_key_exists($id, $urls)) {
       $id = $this->makeId();
     }
+
+    $urls += [$id => $url];
     $urls[$id] = $url;
     $json = json_encode($urls);
     file_put_contents("data/short-url/urls.json", $json);
