@@ -2,8 +2,9 @@
 
 const ROUTES = [
   "/^(home)?$/i" => "Home",
+  "/^about$/i" => "About",
   "/^conbot|osmium$/i" => "Redirect",
-  "/^a\/[0-9A-Za-z-=]{4}$/i" => "ShortUrl",
+  "/^a\/[0-9A-Za-z-_]{4}$/i" => "ShortUrl",
   "/^api\/shorten$/i" => "ShortenApi",
 ];
 
