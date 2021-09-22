@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 const BASE_64 = "0123456789abcdefghijklmnopqrstuvwxyz".
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZ-=";
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ-_";
 
 class ShortUrlMod {
   private function makeId() {

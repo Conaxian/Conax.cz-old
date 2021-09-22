@@ -14,12 +14,10 @@ class Router extends Controller {
     $url = parse_url($url);
     $path = trim($url["path"], "/");
     $path = trim($path);
-    $query = trim($url["query"] ?? "");
     $fragment = trim($url["fragment"] ?? "");
 
     return [
       "path" => $path,
-      "query" => $query,
       "fragment" => $fragment,
     ];
   }
@@ -42,6 +40,7 @@ class Router extends Controller {
     $this->controller->process([
       "path" => $path,
       "url" => $url,
+      "query" => $args["query"],
     ]);
 
     if ($this->controller->error) {

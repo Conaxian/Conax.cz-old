@@ -25,6 +25,7 @@ try {
     "method" => $_SERVER["REQUEST_METHOD"],
     "userAgent" => $_SERVER["HTTP_USER_AGENT"],
     "referer" => $_SERVER["HTTP_REFERER"],
+    "query" => $_GET,
   ]);
 } catch (Error) {
   $router->error(500);
