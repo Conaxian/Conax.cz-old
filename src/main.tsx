@@ -4,18 +4,19 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import App from "./App";
 import theme from "./common/theme";
 
-async function load(pageName: string) {
-  let Page: ComponentClass;
+async function getPage(pageName: string): Promise<ComponentClass> {
   switch (pageName) {
     case "Home":
-      Page = (await import("./pages/HomePage")).default;
-      break;
+      return (await import("./pages/HomePage")).default;
     case "About":
-      Page = (await import("./pages/AboutPage")).default;
-      break;
+      return (await import("./pages/AboutPage")).default;
     default:
       throw new Error(`Unknown page: \`${pageName}\``);
   };
+}
+
+async function load(pageName: string) {
+  const Page = await getPage(pageName);
   const pageElem = createElement(Page);
 
   renderDOM(

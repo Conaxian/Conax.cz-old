@@ -14,8 +14,8 @@ class HomePage extends Component {
         textAlign: "center",
         fontSize: "calc(1.5vw + 0.5rem)",
       }}>
-        <h1>Let's be honest</h1>
-        <p>This website will never be finished</p>
+        <h1>This website</h1>
+        <p>is under construction</p>
       </Grid>
     </Grid>
     );

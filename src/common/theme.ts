@@ -28,5 +28,9 @@ export default createTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"'
     ].join(","),
+
+    h1: {
+      fontSize: "max(1.5rem, calc(1.5vw + 0.5rem))",
+    },
   },
 });
