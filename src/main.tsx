@@ -3,11 +3,19 @@ import { render as renderDOM } from "react-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import App from "./App";
 import theme from "./common/theme";
-import * as Pages from "./pages";
 
-function load(pageName: string) {
-  // @ts-ignore TS doesn't recognize that `Pages` contains React Components
-  const Page: ComponentClass = Pages[pageName + "Page"].default;
+async function load(pageName: string) {
+  let Page: ComponentClass;
+  switch (pageName) {
+    case "Home":
+      Page = (await import("./pages/HomePage")).default;
+      break;
+    case "About":
+      Page = (await import("./pages/AboutPage")).default;
+      break;
+    default:
+      throw new Error(`Unknown page: \`${pageName}\``);
+  };
   const pageElem = createElement(Page);
 
   renderDOM(
