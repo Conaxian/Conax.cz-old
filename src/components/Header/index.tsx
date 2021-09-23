@@ -8,15 +8,15 @@ import AboutButton from "./AboutButton";
 class Header extends Component {
   render() {
     return (<>
-      <AppBar position="fixed" sx={{ flexGrow: 1 }}>
-        <Toolbar>
-          <Sidebar />
-          <TitleText />
-          <HomeButton />
-          <AboutButton />
-        </Toolbar>
-      </AppBar>
-      <Toolbar />
+    <AppBar position="fixed" sx={{ flexGrow: 1 }}>
+      <Toolbar>
+        <Sidebar />
+        <TitleText />
+        <HomeButton />
+        <AboutButton />
+      </Toolbar>
+    </AppBar>
+    <Toolbar />
     </>);
   }
 }

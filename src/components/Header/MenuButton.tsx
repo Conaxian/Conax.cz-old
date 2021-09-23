@@ -11,10 +11,10 @@ class MenuButton extends Component {
 
   render() {
     return (
-      <IconButton color="inherit" onClick={ this.props.onClick }
-      edge="start" aria-label="menu" sx={{ marginRight: 2 }}>
-        <MenuIcon />
-      </IconButton>
+    <IconButton color="inherit" onClick={ this.props.onClick }
+    edge="start" aria-label="menu" sx={{ marginRight: 2 }}>
+      <MenuIcon />
+    </IconButton>
     );
   }
 }
