@@ -1,4 +1,4 @@
-import { ComponentClass, createElement, StrictMode } from "react";
+import { ComponentClass, StrictMode } from "react";
 import { render as renderDOM } from "react-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import App from "./App";
@@ -17,7 +17,7 @@ async function getPage(pageName: string): Promise<ComponentClass> {
 
 async function load(pageName: string) {
   const Page = await getPage(pageName);
-  const pageElem = createElement(Page);
+  const pageElem = <Page />;
 
   renderDOM(
     <StrictMode>
