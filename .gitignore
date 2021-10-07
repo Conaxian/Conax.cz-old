@@ -5,9 +5,8 @@
 /web/data
 /web/content
 
-# Backwards compatibility
-/web/osm
-/web/cbfiles
+# Environmental variables
+.env
 
 # Dependencies
 /node_modules
