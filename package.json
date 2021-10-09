@@ -37,7 +37,8 @@
     "rehype-raw": "^6.1.0",
     "remark-gfm": "^3.0.0",
     "remark-math": "^5.1.0",
-    "style-loader": "^3.3.0"
+    "style-loader": "^3.3.0",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
