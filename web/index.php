@@ -14,6 +14,13 @@ function autoload(string $class) {
 
 spl_autoload_register("autoload");
 
+$envVars = explode(PHP_EOL, file_get_contents(".env"));
+foreach ($envVars as $envVar) {
+  try {
+    putenv($envVar);
+  } catch (Error) {}
+}
+
 $ipInfoMod = new IpInfoMod();
 $ipInfo = $ipInfoMod->getIpInfo($_SERVER["REMOTE_ADDR"]);
 
