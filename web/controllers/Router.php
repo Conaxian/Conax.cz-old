@@ -6,6 +6,7 @@ const ROUTES = [
   "/^conbot|osmium$/i" => "Redirect",
   "/^a\/[0-9A-Za-z-_]{4}$/i" => "ShortUrl",
   "/^api\/shorten$/i" => "ShortenApi",
+  "/^notes$/i" => "SchoolNotes",
 ];
 
 class Router extends Controller {
