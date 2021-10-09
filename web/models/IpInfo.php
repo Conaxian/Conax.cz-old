@@ -7,7 +7,7 @@ class IpInfoMod {
     $curl = curl_init();
     curl_setopt_array($curl, [
       CURLOPT_URL => "http://ip-api.com/json/$ip?fields=66846719",
-      CURLOPT_RETURNTRANSFER => 1,
+      CURLOPT_RETURNTRANSFER => true,
     ]);
     $json = curl_exec($curl);
     $data = json_decode($json, true);
