@@ -9,6 +9,8 @@ class About extends Component {
         <Grid item xs={12}>
           <Typography variant="h1" display="center" gutterBottom sx={{
             paddingTop: "3vh",
+            fontSize: "max(1.5rem, calc(1.5vw + 0.5rem))",
+            fontWeight: 700,
           }}>
             Hi! My name is Jan Martin Macháček.
           </Typography>
@@ -23,8 +25,10 @@ class About extends Component {
             If you want to contact me, send me an email to&nbsp;
             <Box sx={{
               display: "inline",
-              color: "background.default",
+              color: "text.main",
               bgcolor: "primary.main",
+              fontWeight: 700,
+              padding: 0.3,
             }}>
               &nbsp;conax@conax.cz&nbsp;
             </Box>
