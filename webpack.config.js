@@ -1,4 +1,5 @@
 const path = require("path/posix");
+const webpack = require("webpack");
 
 module.exports = {
   entry: {
@@ -11,6 +12,11 @@ module.exports = {
   mode: process.env.NODE_ENV || "development",
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
+    fallback: {
+      buffer: require.resolve("buffer"),
+      assert: require.resolve("assert"),
+      path: require.resolve("path-browserify"),
+    },
   },
   module: {
     rules: [
@@ -31,7 +37,16 @@ module.exports = {
         use: {
           loader: "ts-loader",
         },
-      }
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
+  ],
 }
