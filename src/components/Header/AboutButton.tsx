@@ -6,8 +6,8 @@ class AboutButton extends Component {
   render() {
     return (
     <Button href="/about" color="inherit" startIcon={ <InfoIcon /> }
-    sx={{ marginLeft: 1, marginRight: 1 }}>
-      Info
+    sx={{ marginX: 1, fontWeight: 700 }}>
+      About
     </Button>
     );
   }

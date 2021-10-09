@@ -6,7 +6,7 @@ class HomeButton extends Component {
   render() {
     return (
     <Button href="/" color="inherit" startIcon={ <HomeIcon /> }
-    sx={{ marginLeft: 1, marginRight: 1 }}>
+    sx={{ marginX: 1, fontWeight: 700 }}>
       Home
     </Button>
     );
