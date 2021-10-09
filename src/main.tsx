@@ -1,30 +1,40 @@
 import { ComponentClass, StrictMode } from "react";
-import { render as renderDOM } from "react-dom";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import App from "./App";
-import theme from "./common/theme";
+import { render as renderDom } from "react-dom";
 
-async function getPage(pageName: string): Promise<ComponentClass> {
-  switch (pageName) {
-    case "Home":
-      return (await import("./pages/HomePage")).default;
-    case "About":
-      return (await import("./pages/AboutPage")).default;
-    default:
-      throw new Error(`Unknown page: \`${pageName}\``);
-  };
+import App from "./App";
+
+interface PageData {
+  name: string;
+  data?: {};
 }
 
-async function load(pageName: string) {
-  const Page = await getPage(pageName);
-  const pageElem = <Page />;
+async function getPage(pageData: PageData): Promise<ComponentClass> {
+  let module;
 
-  renderDOM(
+  switch (pageData.name) {
+    case "Home":
+      module = await import("./pages/HomePage");
+      break;
+    case "About":
+      module = await import("./pages/AboutPage");
+      break;
+    case "Note":
+      module = await import("./pages/NotePage");
+      break;
+    default:
+      throw new Error(`Unknown page: \`${pageData.name}\``);
+  };
+
+  return module.default;
+}
+
+async function load(pageData: PageData) {
+  const Page = await getPage(pageData);
+  const pageElem = <Page { ...pageData.data } />;
+
+  renderDom(
     <StrictMode>
-      <ThemeProvider theme={ theme }>
-        <CssBaseline />
-        <App page={ pageElem } />
-      </ThemeProvider>
+      <App page={ pageElem } />
     </StrictMode>,
     document.getElementById("root"),
   );
@@ -35,7 +45,7 @@ declare global {
 }
 
 interface AppGlobal {
-  load: (pageName: string) => void;
+  load: (pageData: PageData) => void;
 }
 
 window.appGlobal = { load };
