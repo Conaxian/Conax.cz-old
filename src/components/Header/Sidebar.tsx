@@ -5,7 +5,7 @@ import MenuButton from "./MenuButton";
 const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 interface State {
-  shown: boolean,
+  shown: boolean;
 }
 
 class Sidebar extends Component {
