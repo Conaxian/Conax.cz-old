@@ -4,6 +4,14 @@ const SUBJECTS = [
   "/^(ZSV?|(Basic[ _]?)?Humanities)$/i" => "BasicHumanities",
   "/^(BI|Biology)$/i" => "Biology",
   "/^(CH|Chemistry)$/i" => "Chemistry",
+  "/^(CJ|Czech)$/i" => "Czech",
+  "/^(AJ|English)$/i" => "English",
+  "/^(ZE?|Geography)$/i" => "Geography",
+  "/^(DE?|History)$/i" => "History",
+  "/^(MA?|Math(ematics)?)$/i" => "Mathematics",
+  "/^(EV?H|Music)$/i" => "Music",
+  "/^(FY|Physics)$/i" => "Physics",
+  "/^(SJ|Spanish)$/i" => "Spanish",
 ];
 
 class SchoolNotesControl extends Controller {
