@@ -19,18 +19,25 @@ class Sidebar extends Component {
   toggleShow(open: boolean) {
     return () => {
       this.setState({ shown: open });
-    }
+    };
   }
 
   render() {
-    return (<>
-    <MenuButton onClick={ this.toggleShow(true) } />
-    <SwipeableDrawer anchor="left" open={ this.state.shown }
-    onOpen={ this.toggleShow(true) } onClose={ this.toggleShow(false) }
-    disableBackdropTransition={ iOS } disableDiscovery={ iOS }>
-      <Box sx={{ width: 250 }} />
-    </SwipeableDrawer>
-    </>);
+    return (
+      <>
+        <MenuButton onClick={this.toggleShow(true)} />
+        <SwipeableDrawer
+          anchor="left"
+          open={this.state.shown}
+          onOpen={this.toggleShow(true)}
+          onClose={this.toggleShow(false)}
+          disableBackdropTransition={iOS}
+          disableDiscovery={iOS}
+        >
+          <Box sx={{ width: 250 }} />
+        </SwipeableDrawer>
+      </>
+    );
   }
 }
 

@@ -33,11 +33,11 @@ class Theme extends Component {
 
     this.toggleTheme = () => {
       this.setState((state: State) => {
-        const newTheme = (state.theme === "light") ? "dark" : "light";
+        const newTheme = state.theme === "light" ? "dark" : "light";
         setTheme(newTheme);
         return { theme: newTheme };
       });
-    }
+    };
 
     this.state = {
       theme: getTheme(),
@@ -47,23 +47,24 @@ class Theme extends Component {
 
   render() {
     const themeCore = (
-    <ThemeContext.Consumer>
-      {theme => (
-      <ThemeProvider theme={
-        (theme.theme === "light") ? this.props.light : this.props.dark
-      }>
-        <CssBaseline />
-        { this.props.children }
-      </ThemeProvider>
-      )}
-    </ThemeContext.Consumer>
+      <ThemeContext.Consumer>
+        {(theme) => (
+          <ThemeProvider
+            theme={theme.theme === "light" ? this.props.light : this.props.dark}
+          >
+            <CssBaseline />
+            {this.props.children}
+          </ThemeProvider>
+        )}
+      </ThemeContext.Consumer>
     );
 
-    if (this.props.root) return (
-    <ThemeContext.Provider value={ this.state }>
-      { themeCore }
-    </ThemeContext.Provider>
-    );
+    if (this.props.root)
+      return (
+        <ThemeContext.Provider value={this.state}>
+          {themeCore}
+        </ThemeContext.Provider>
+      );
 
     return themeCore;
   }

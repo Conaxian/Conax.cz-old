@@ -13,12 +13,12 @@ class App extends Component {
 
   render() {
     return (
-    <Theme root light={ lightTheme } dark={ darkTheme }>
-      <div className="app">
-        <Header />
-        { this.props.page }
-      </div>
-    </Theme>
+      <Theme root light={lightTheme} dark={darkTheme}>
+        <div className="app">
+          <Header />
+          {this.props.page}
+        </div>
+      </Theme>
     );
   }
 }

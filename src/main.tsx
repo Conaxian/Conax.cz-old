@@ -23,25 +23,27 @@ async function getPage(pageData: PageData): Promise<ComponentClass> {
       break;
     default:
       throw new Error(`Unknown page: \`${pageData.name}\``);
-  };
+  }
 
   return module.default;
 }
 
 async function load(pageData: PageData) {
   const Page = await getPage(pageData);
-  const pageElem = <Page { ...pageData.data } />;
+  const pageElem = <Page {...pageData.data} />;
 
   renderDom(
     <StrictMode>
-      <App page={ pageElem } />
+      <App page={pageElem} />
     </StrictMode>,
-    document.getElementById("root"),
+    document.getElementById("root")
   );
 }
 
 declare global {
-  interface Window { appGlobal: AppGlobal; }
+  interface Window {
+    appGlobal: AppGlobal;
+  }
 }
 
 interface AppGlobal {

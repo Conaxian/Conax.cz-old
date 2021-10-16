@@ -5,10 +5,14 @@ import { Info as InfoIcon } from "@mui/icons-material";
 class AboutButton extends Component {
   render() {
     return (
-    <Button href="/about" color="inherit" startIcon={ <InfoIcon /> }
-    sx={{ marginX: 1, fontWeight: 700 }}>
-      About
-    </Button>
+      <Button
+        href="/about"
+        color="inherit"
+        startIcon={<InfoIcon />}
+        sx={{ marginX: 1, fontWeight: 700 }}
+      >
+        About
+      </Button>
     );
   }
 }

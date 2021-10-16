@@ -11,14 +11,10 @@ class NotePage extends Component {
   props!: Readonly<Props>;
 
   render() {
-    let note = this.props.note;
-    note = note.replace(/([^#])###([^#])/g, "$1##$2");
-    note = note.replace(/([^#])######([^#])/g, "$1###$2");
-
     return (
-    <Box sx={{ marginX: 4 }}>
-      <Markdown text={ note } />
-    </Box>
+      <Box sx={{ marginX: 4 }}>
+        <Markdown text={this.props.note} />
+      </Box>
     );
   }
 }

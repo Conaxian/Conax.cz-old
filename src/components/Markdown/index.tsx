@@ -23,8 +23,6 @@ class Markdown extends Component {
 
   render() {
     let text = this.props.text.replace(/$/gm, "  ");
-    text = text.replace(/\^([0-9a-zA-Z]+)\^/g, "<sup>$1</sup>");
-    text = text.replace(/_([0-9a-zA-Z]+)_/g, "<sub>$1</sub>");
 
     return (
     <div className="markdown">

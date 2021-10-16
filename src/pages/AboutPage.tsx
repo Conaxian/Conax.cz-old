@@ -4,9 +4,7 @@ import About from "../components/About";
 
 class HomePage extends Component {
   render() {
-    return (
-    <About />
-    );
+    return <About />;
   }
 }
 

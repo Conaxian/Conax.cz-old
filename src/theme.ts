@@ -14,7 +14,7 @@ const commonTheme = {
       '"Segoe UI Symbol"',
     ].join(","),
   },
-}
+};
 
 export const lightTheme = createTheme({
   ...commonTheme,
