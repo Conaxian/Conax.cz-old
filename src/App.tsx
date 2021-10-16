@@ -5,7 +5,7 @@ import Theme from "./components/Theme";
 import { lightTheme, darkTheme } from "./theme";
 
 interface Props {
-  page: JSX.Element
+  page: JSX.Element;
 }
 
 class App extends Component {
