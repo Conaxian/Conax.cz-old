@@ -5,7 +5,7 @@ import App from "./App";
 
 interface PageData {
   name: string;
-  data?: {}
+  data?: {};
 }
 
 async function getPage(pageData: PageData): Promise<ComponentClass> {
