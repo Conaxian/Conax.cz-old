@@ -1,9 +1,26 @@
 <?php declare(strict_types=1);
 
+const SUBJECTS = [
+  "/^(ZSV?|(Basic[ _]?)?Humanities)$/i" => "BasicHumanities",
+  "/^(BI|Biology)$/i" => "Biology",
+  "/^(CH|Chemistry)$/i" => "Chemistry",
+];
+
 class SchoolNotesControl extends Controller {
+  private function resolveSubject(string $subject): ?string {
+    foreach (SUBJECTS as $pattern => $result) {
+      if (preg_match($pattern, $subject)) {
+        return $result;
+      }
+    }
+    return null;
+  }
+
   public function process(array $args) {
     $subject = $args["query"]["subject"];
     $num = $args["query"]["num"];
+
+    $subject = $this->resolveSubject($subject);
 
     if (!$subject or !$num) {
       $this->error = 400;
