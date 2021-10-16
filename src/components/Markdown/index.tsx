@@ -25,23 +25,28 @@ class Markdown extends Component {
     let text = this.props.text.replace(/$/gm, "  ");
 
     return (
-    <div className="markdown">
-      <ReactMarkdown children={ text }
-        remarkPlugins={[ remarkGfm, remarkMath ]}
-        rehypePlugins={[ rehypeRaw, rehypeKatex ]}
-        components={{
-          table: ({ children }) => <Table children={ children }
-            sx={{ maxWidth: 480 }} />,
-          thead: ({ children }) => <TableHead children={ children } />,
-          tbody: ({ children }) => <TableBody children={ children } />,
-          tr: ({ children }) => <TableRow children={ children } />,
-          th: ({ children }) => <TableCell children={ children } />,
-          td: ({ children }) => <TableCell children={ children } />,
-          blockquote: ({ children }) => <blockquote>
-            <i children={ children } /></blockquote>,
-        }}
-      />
-    </div>
+      <div className="markdown">
+        <ReactMarkdown
+          children={text}
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeRaw, rehypeKatex]}
+          components={{
+            table: ({ children }) => (
+              <Table children={children} sx={{ maxWidth: 480 }} />
+            ),
+            thead: ({ children }) => <TableHead children={children} />,
+            tbody: ({ children }) => <TableBody children={children} />,
+            tr: ({ children }) => <TableRow children={children} />,
+            th: ({ children }) => <TableCell children={children} />,
+            td: ({ children }) => <TableCell children={children} />,
+            blockquote: ({ children }) => (
+              <blockquote>
+                <i children={children} />
+              </blockquote>
+            ),
+          }}
+        />
+      </div>
     );
   }
 }

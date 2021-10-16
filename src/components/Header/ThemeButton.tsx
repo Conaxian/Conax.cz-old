@@ -12,14 +12,17 @@ class ThemeButton extends Component {
 
   render() {
     return (
-    <ThemeContext.Consumer>
-      {({ theme, toggleTheme }) => (
-      <IconButton color="inherit" sx={{ marginLeft: 1 }}
-      onClick={ toggleTheme }>
-        { theme === "light" ? <LightModeIcon /> : <DarkModeIcon /> }
-      </IconButton>
-      )}
-    </ThemeContext.Consumer>
+      <ThemeContext.Consumer>
+        {({ theme, toggleTheme }) => (
+          <IconButton
+            color="inherit"
+            sx={{ marginLeft: 1 }}
+            onClick={toggleTheme}
+          >
+            {theme === "light" ? <LightModeIcon /> : <DarkModeIcon />}
+          </IconButton>
+        )}
+      </ThemeContext.Consumer>
     );
   }
 }
