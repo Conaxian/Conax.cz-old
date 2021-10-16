@@ -9,7 +9,7 @@ interface PageData {
 }
 
 async function getPage(pageData: PageData): Promise<ComponentClass> {
-  let module
+  let module;
 
   switch (pageData.name) {
     case "Home":
