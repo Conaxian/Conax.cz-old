@@ -45,14 +45,13 @@ function* makeButtons() {
         lg={2}
         xl={1}
         columns={{ xl: 11, lg: 12 }}
-        color="primary"
         justifyContent="center"
         textAlign="center"
         wrap="nowrap"
       >
         <Button
           href={makeButtonUrl(code)}
-          color="primary"
+          color="secondary"
           variant="contained"
           fullWidth
         >
