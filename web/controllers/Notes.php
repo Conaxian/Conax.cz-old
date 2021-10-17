@@ -30,6 +30,7 @@ class NotesControl extends Controller {
   }
 
   private function resolveSubject(string $subject): ?string {
+    if (!$subject) return null;
     foreach (SUBJECTS as $pattern => $result) {
       if (preg_match($pattern, $subject)) {
         return $result;
