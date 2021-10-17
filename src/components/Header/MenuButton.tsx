@@ -16,7 +16,7 @@ class MenuButton extends Component {
         onClick={this.props.onClick}
         edge="start"
         aria-label="menu"
-        sx={{ mr: 2 }}
+        sx={{ ml: 1, mr: 1 }}
       >
         <MenuIcon />
       </IconButton>
