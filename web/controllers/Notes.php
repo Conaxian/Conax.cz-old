@@ -24,7 +24,7 @@ class NotesControl extends Controller {
 
     if ($parts[3] || !$subject) return [];
 
-    if ($parts[2]) {
+    if ($parts[2] || $parts[2] === 0) {
       return [
         "subject" => $subject,
         "originalSubject" => $parts[1],
