@@ -6,7 +6,7 @@ class NoteNav extends Component {
   render() {
     return (
       <Box sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}>
-        <BottomNavigation>
+        <BottomNavigation color="primary">
           <BottomNavigationAction
             label="Previous"
             href="/notes"
