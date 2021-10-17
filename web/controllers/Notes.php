@@ -61,6 +61,7 @@ class NotesControl extends Controller {
     $this->head = $controller->head;
     $this->data = $controller->data;
     $this->view = $controller->view;
+    $this->error = $controller->error;
   }
 }
 
