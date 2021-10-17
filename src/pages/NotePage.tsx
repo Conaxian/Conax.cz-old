@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Box } from "@mui/material";
 
 import Markdown from "../components/Markdown";
+import NoteNav from "../components/NoteNav";
 
 interface Props {
   note: string;
@@ -12,9 +13,12 @@ class NotePage extends Component {
 
   render() {
     return (
-      <Box sx={{ mx: 4, flexGrow: 1 }}>
-        <Markdown text={this.props.note} />
-      </Box>
+      <>
+        <Box sx={{ mx: 4, flexGrow: 1 }}>
+          <Markdown text={this.props.note} />
+        </Box>
+        <NoteNav />
+      </>
     );
   }
 }
