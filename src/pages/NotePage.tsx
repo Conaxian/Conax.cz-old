@@ -14,7 +14,7 @@ class NotePage extends Component {
   render() {
     return (
       <>
-        <Box sx={{ mx: 4, flexGrow: 1, mb: 8 }}>
+        <Box sx={{ mx: 4, flexGrow: 1, mb: 9 }}>
           <Markdown text={this.props.note} />
         </Box>
         <NoteNav />
