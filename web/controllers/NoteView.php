@@ -8,6 +8,7 @@ class NoteViewControl extends Controller {
     $schoolNotes = new GithubNotesMod();
     $note = $schoolNotes->getNote("2021_22", $subject, $num);
 
+    echo $note;
     if (json_decode($note, true)["message"] === "Not Found") {
       $this->error = 404;
       return;
