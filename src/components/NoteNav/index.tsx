@@ -59,39 +59,33 @@ class NoteNav extends Component {
     return (
       <Box sx={{ position: "fixed", width: "100%", bottom: 0 }}>
         <BottomNavigation showLabels>
-          {
-            <>
-              <BottomNavigationAction
-                label={
-                  this.state.validity?.previous ?? true ? "Previous" : "First"
-                }
-                href={this.state.validity?.previous ?? true ? previous : "#"}
-                icon={
-                  this.state.validity?.previous ?? true ? (
-                    <ArrowBackIcon />
-                  ) : (
-                    <BlockIcon />
-                  )
-                }
-              />
-              <BottomNavigationAction
-                label="Subjects"
-                href="/notes"
-                icon={<MenuBookIcon />}
-              />
-              <BottomNavigationAction
-                label={this.state.validity?.next ?? true ? "Next" : "Last"}
-                href={this.state.validity?.next ?? true ? next : "#"}
-                icon={
-                  this.state.validity?.next ?? true ? (
-                    <ArrowForwardIcon />
-                  ) : (
-                    <BlockIcon />
-                  )
-                }
-              />
-            </>
-          }
+          <BottomNavigationAction
+            label={this.state.validity?.previous ?? true ? "Previous" : "First"}
+            href={this.state.validity?.previous ?? true ? previous : "#"}
+            icon={
+              this.state.validity?.previous ?? true ? (
+                <ArrowBackIcon />
+              ) : (
+                <BlockIcon />
+              )
+            }
+          />
+          <BottomNavigationAction
+            label="Subjects"
+            href="/notes"
+            icon={<MenuBookIcon />}
+          />
+          <BottomNavigationAction
+            label={this.state.validity?.next ?? true ? "Next" : "Last"}
+            href={this.state.validity?.next ?? true ? next : "#"}
+            icon={
+              this.state.validity?.next ?? true ? (
+                <ArrowForwardIcon />
+              ) : (
+                <BlockIcon />
+              )
+            }
+          />
         </BottomNavigation>
       </Box>
     );
