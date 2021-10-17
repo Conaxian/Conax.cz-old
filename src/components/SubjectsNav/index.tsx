@@ -43,10 +43,11 @@ function* makeButtons() {
         sm={6}
         md={4}
         lg={2}
-        xl={1}
+        xl={"auto"}
         color="primary"
         justifyContent="center"
         textAlign="center"
+        wrap="nowrap"
       >
         <Button
           href={makeButtonUrl(code)}
@@ -66,7 +67,7 @@ class SubjectsNav extends Component {
     const buttons = Array.from(makeButtons());
 
     return (
-      <Grid container spacing={2} color="primary">
+      <Grid container spacing={2}>
         {buttons}
       </Grid>
     );
