@@ -62,10 +62,12 @@ class NoteNav extends Component {
           {
             <>
               <BottomNavigationAction
-                label={this.state.validity!.previous ? "Previous" : "First"}
-                href={this.state.validity!.previous ? previous : "#"}
+                label={
+                  this.state.validity?.previous ?? true ? "Previous" : "First"
+                }
+                href={this.state.validity?.previous ?? true ? previous : "#"}
                 icon={
-                  this.state.validity!.previous ? (
+                  this.state.validity?.previous ?? true ? (
                     <ArrowBackIcon />
                   ) : (
                     <BlockIcon />
@@ -78,10 +80,10 @@ class NoteNav extends Component {
                 icon={<MenuBookIcon />}
               />
               <BottomNavigationAction
-                label={this.state.validity!.next ? "Next" : "Last"}
-                href={this.state.validity!.next ? next : "#"}
+                label={this.state.validity?.next ?? true ? "Next" : "Last"}
+                href={this.state.validity?.next ?? true ? next : "#"}
                 icon={
-                  this.state.validity!.next ? (
+                  this.state.validity?.next ?? true ? (
                     <ArrowForwardIcon />
                   ) : (
                     <BlockIcon />
