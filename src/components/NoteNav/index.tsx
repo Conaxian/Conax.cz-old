@@ -5,7 +5,7 @@ import { Restore as RestoreIcon } from "@mui/icons-material";
 class NoteNav extends Component {
   render() {
     return (
-      <Box sx={{ position: "fixed", width: "100%", bottom: 0, pt: 2 }}>
+      <Box sx={{ position: "fixed", width: "100%", bottom: 0 }}>
         <BottomNavigation showLabels>
           <BottomNavigationAction
             label="Previous"
