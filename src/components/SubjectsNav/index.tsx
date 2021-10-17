@@ -52,7 +52,7 @@ class SubjectsNav extends Component {
 
     return (
       <Grid container spacing={2}>
-        <ButtonGroup variant="contained">{buttons}</ButtonGroup>
+        {buttons}
       </Grid>
     );
   }
