@@ -62,7 +62,7 @@ function* makeButtons() {
   }
 }
 
-class SubjectsNav extends Component {
+class SubjectsList extends Component {
   render() {
     const buttons = Array.from(makeButtons());
 
@@ -74,4 +74,4 @@ class SubjectsNav extends Component {
   }
 }
 
-export default SubjectsNav;
+export default SubjectsList;

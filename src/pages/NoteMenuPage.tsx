@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Box } from "@mui/material";
 
-import SubjectsNav from "../components/SubjectsNav";
+import SubjectsList from "../components/SubjectsList";
 
 interface Props {
   note: string;
@@ -13,7 +13,7 @@ class NotePage extends Component {
   render() {
     return (
       <Box sx={{ mx: 4, mt: 4 }}>
-        <SubjectsNav />
+        <SubjectsList />
       </Box>
     );
   }
