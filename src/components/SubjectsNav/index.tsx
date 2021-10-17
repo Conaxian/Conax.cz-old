@@ -37,8 +37,8 @@ const makeButtonUrl = (code: string) =>
 function* makeButtons() {
   for (const code in SUBJECTS) {
     yield (
-      <Grid item xs={4} sm={2} md={1} color="primary">
-        <Button href={makeButtonUrl(code)} color="primary">
+      <Grid item xs={6} sm={4} md={2} lg={1} color="primary">
+        <Button href={makeButtonUrl(code)} color="primary" variant="contained">
           {SUBJECTS[code as SubjectCode]}
         </Button>
       </Grid>
