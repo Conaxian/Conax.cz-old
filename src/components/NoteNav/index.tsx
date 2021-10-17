@@ -1,11 +1,11 @@
 import { Component } from "react";
-import { Paper, BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { Restore as RestoreIcon } from "@mui/icons-material";
 
 class NoteNav extends Component {
   render() {
     return (
-      <Paper sx={{ position: "fixed", width: "100%", bottom: 0 }} elevation={3}>
+      <Box sx={{ position: "fixed", width: "100%", bottom: 0, mt: 8 }}>
         <BottomNavigation showLabels>
           <BottomNavigationAction
             label="Previous"
@@ -23,7 +23,7 @@ class NoteNav extends Component {
             icon={<RestoreIcon />}
           />
         </BottomNavigation>
-      </Paper>
+      </Box>
     );
   }
 }
