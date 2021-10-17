@@ -1,18 +1,16 @@
 import { Component } from "react";
-import { Link } from "@mui/material";
+import { Typography } from "@mui/material";
 
 class TitleText extends Component {
   render() {
     return (
-      <Link
-        href="/"
-        underline="none"
+      <Typography
         variant="h6"
         noWrap
-        sx={{ flexGrow: 1, fontWeight: 700 }}
+        sx={{ flexGrow: 1, fontWeight: 700, textDecoration: "none" }}
       >
-        Conax
-      </Link>
+        <a href="/">Conax</a>
+      </Typography>
     );
   }
 }
