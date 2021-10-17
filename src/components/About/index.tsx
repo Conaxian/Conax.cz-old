@@ -12,7 +12,7 @@ class About extends Component {
               display="center"
               gutterBottom
               sx={{
-                paddingTop: "3vh",
+                pt: "3vh",
                 fontSize: "max(1.5rem, calc(1.5vw + 0.5rem))",
                 fontWeight: 700,
               }}
@@ -34,7 +34,7 @@ class About extends Component {
                   color: "text.main",
                   bgcolor: "primary.main",
                   fontWeight: 700,
-                  padding: 0.3,
+                  p: 0.3,
                 }}
               >
                 &nbsp;conax@conax.cz&nbsp;

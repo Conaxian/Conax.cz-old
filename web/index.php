@@ -4,7 +4,7 @@ mb_internal_encoding("UTF-8");
 
 function autoload(string $class) {
   if (preg_match("/Mod$/", $class)) {
-    $class = preg_replace("/Mod$/", '', $class);
+    $class = preg_replace("/Mod$/", "", $class);
     require("models/" . $class . ".php");
   } else {
     $class = preg_replace("/Control$/", "", $class);

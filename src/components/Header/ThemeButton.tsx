@@ -16,7 +16,6 @@ class ThemeButton extends Component {
         {({ theme, toggleTheme }) => (
           <IconButton
             color="inherit"
-            sx={{ marginLeft: 1 }}
             onClick={toggleTheme}
           >
             {theme === "light" ? <LightModeIcon /> : <DarkModeIcon />}

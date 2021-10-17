@@ -18,6 +18,9 @@ async function getPage(pageData: PageData): Promise<ComponentClass> {
     case "About":
       module = await import("./pages/AboutPage");
       break;
+    case "NoteMenu":
+      module = await import("./pages/NoteMenuPage");
+      break;
     case "Note":
       module = await import("./pages/NotePage");
       break;
