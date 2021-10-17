@@ -9,7 +9,7 @@ class AboutButton extends Component {
         href="/about"
         color="inherit"
         startIcon={<InfoIcon />}
-        sx={{ marginX: 1, fontWeight: 700 }}
+        sx={{ mx: 1, fontWeight: 700 }}
       >
         About
       </Button>

@@ -12,7 +12,7 @@ class NotePage extends Component {
 
   render() {
     return (
-      <Box sx={{ marginX: 4, marginTop: 4 }}>
+      <Box sx={{ mx: 4, mt: 4 }}>
         <SubjectsNav />
       </Box>
     );
