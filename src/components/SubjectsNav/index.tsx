@@ -66,7 +66,7 @@ class SubjectsNav extends Component {
     const buttons = Array.from(makeButtons());
 
     return (
-      <Grid container spacing={2} wrap="nowrap">
+      <Grid container spacing={2}>
         {buttons}
       </Grid>
     );
