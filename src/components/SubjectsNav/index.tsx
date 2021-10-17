@@ -46,7 +46,9 @@ function* makeButtons() {
 
 class SubjectsNav extends Component {
   render() {
-    return <ButtonGroup variant="contained">{makeButtons()}</ButtonGroup>;
+    const buttons = Array.from(makeButtons());
+
+    return <ButtonGroup variant="contained">{buttons}</ButtonGroup>;
   }
 }
 
