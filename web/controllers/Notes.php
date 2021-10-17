@@ -18,6 +18,7 @@ class NotesControl extends Controller {
   private function pathData(string $path) {
     $parts = explode("/", $path);
     $subject = $this->resolveSubject($parts[1]);
+    echo $subject;
 
     if (!$parts[1]) return [ "menu" => true ];
     if ($parts[3] || !$subject) return [];
@@ -41,7 +42,7 @@ class NotesControl extends Controller {
 
   public function process(array $args) {
     $pathData = $this->pathData($args["path"]);
-    echo $pathData;
+    print_r($pathData);
 
     if (!$pathData["subject"] && !$pathData["menu"]) {
       $this->error = 404;
