@@ -41,6 +41,7 @@ class NotesControl extends Controller {
 
   public function process(array $args) {
     $pathData = $this->pathData($args["path"]);
+    echo $pathData;
 
     if (!$pathData["subject"] && !$pathData["menu"]) {
       $this->error = 404;
