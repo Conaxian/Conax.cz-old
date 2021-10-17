@@ -44,7 +44,7 @@ function* makeButtons() {
         md={4}
         lg={2}
         xl={1}
-        columns={{ xs: 12 }}
+        columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 11 }}
         justifyContent="center"
         textAlign="center"
       >
