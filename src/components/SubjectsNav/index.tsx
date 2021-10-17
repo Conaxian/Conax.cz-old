@@ -37,8 +37,8 @@ const makeButtonUrl = (code: string) =>
 function* makeButtons() {
   for (const code in SUBJECTS) {
     yield (
-      <Grid item xs={4}>
-        <Button href={makeButtonUrl(code)}>
+      <Grid item xs={4} color="primary">
+        <Button href={makeButtonUrl(code)} color="primary">
           {SUBJECTS[code as SubjectCode]}
         </Button>
       </Grid>
@@ -51,7 +51,7 @@ class SubjectsNav extends Component {
     const buttons = Array.from(makeButtons());
 
     return (
-      <Grid container spacing={2}>
+      <Grid container spacing={2} color="primary">
         {buttons}
       </Grid>
     );
