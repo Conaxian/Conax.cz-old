@@ -31,9 +31,6 @@ const SUBJECTS: Subjects = {
   sj: "Spanish",
 };
 
-const makeButtonUrl = (code: string) =>
-  `${window.location.protocol}//${window.location.host}/notes/${code}`;
-
 function* makeButtons() {
   for (const code in SUBJECTS) {
     yield (
@@ -49,7 +46,7 @@ function* makeButtons() {
         textAlign="center"
       >
         <Button
-          href={makeButtonUrl(code)}
+          href={`/notes/${code}`}
           color="secondary"
           variant="contained"
           fullWidth
