@@ -44,7 +44,7 @@ function* makeButtons() {
         md={4}
         lg={2}
         xl={1}
-        columns={{ xl: 11, lg: 12 }}
+        columns={{ xl: 11, sx: 12 }}
         justifyContent="center"
         textAlign="center"
         wrap="nowrap"
@@ -54,6 +54,7 @@ function* makeButtons() {
           color="secondary"
           variant="contained"
           fullWidth
+          sx={{ fontWeight: 700 }}
         >
           {SUBJECTS[code as SubjectCode]}
         </Button>
