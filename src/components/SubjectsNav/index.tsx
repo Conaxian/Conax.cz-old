@@ -43,7 +43,8 @@ function* makeButtons() {
         sm={6}
         md={4}
         lg={2}
-        xl={"auto"}
+        xl={1}
+        columns={11}
         color="primary"
         justifyContent="center"
         textAlign="center"
