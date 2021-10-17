@@ -56,7 +56,7 @@ class NotesControl extends Controller {
 
     $pathData["num"] ??= 1;
     $controller = new NoteViewControl();
-    $controller->process($args + $pathData);
+    $controller->process($args + [ "data" => $pathData ]);
 
     $this->head = $controller->head;
     $this->data = $controller->data;
