@@ -18,7 +18,7 @@ interface Subjects {
 type SubjectCode = keyof Subjects;
 
 const SUBJECTS: Subjects = {
-  zs: "Basic Humanities",
+  zs: "Humanities",
   bi: "Biology",
   ch: "Chemistry",
   cj: "Czech",
@@ -48,7 +48,12 @@ function* makeButtons() {
         justifyContent="center"
         textAlign="center"
       >
-        <Button href={makeButtonUrl(code)} color="primary" variant="contained">
+        <Button
+          href={makeButtonUrl(code)}
+          color="primary"
+          variant="contained"
+          fullWidth
+        >
           {SUBJECTS[code as SubjectCode]}
         </Button>
       </Grid>
