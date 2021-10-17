@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Button, ButtonGroup } from "@mui/material";
+import { Button, ButtonGroup, Grid } from "@mui/material";
 
 interface Subjects {
   zs: string;
@@ -37,9 +37,11 @@ const makeButtonUrl = (code: string) =>
 function* makeButtons() {
   for (const code in SUBJECTS) {
     yield (
-      <Button href={makeButtonUrl(code)}>
-        {SUBJECTS[code as SubjectCode]}
-      </Button>
+      <Grid item xs={4}>
+        <Button href={makeButtonUrl(code)}>
+          {SUBJECTS[code as SubjectCode]}
+        </Button>
+      </Grid>
     );
   }
 }
@@ -48,7 +50,11 @@ class SubjectsNav extends Component {
   render() {
     const buttons = Array.from(makeButtons());
 
-    return <ButtonGroup variant="contained">{buttons}</ButtonGroup>;
+    return (
+      <Grid container spacing={2}>
+        <ButtonGroup variant="contained">{buttons}</ButtonGroup>
+      </Grid>
+    );
   }
 }
 
