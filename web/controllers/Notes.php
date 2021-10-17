@@ -25,9 +25,13 @@ class NotesControl extends Controller {
     if ($parts[3] || !$subject) return [];
 
     if ($parts[2]) {
-      return [ "subject" => $subject, "num" => $parts[2]];
+      return [
+        "subject" => $subject,
+        "originalSubject" => $parts[1],
+        "num" => $parts[2],
+      ];
     } else {
-      return [ "subject" => $subject ];
+      return [ "subject" => $subject, "originalSubject" => $parts[1] ];
     }
   }
 
@@ -59,7 +63,9 @@ class NotesControl extends Controller {
     $controller->process($args + [ "data" => $pathData ]);
 
     $this->head = $controller->head;
-    $this->data = $controller->data;
+    $this->data = $controller->data + [
+      "subject" => $pathData["originalSubject"],
+    ];
     $this->view = $controller->view;
     $this->error = $controller->error;
   }

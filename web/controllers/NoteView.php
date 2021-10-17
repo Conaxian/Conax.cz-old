@@ -21,7 +21,6 @@ class NoteViewControl extends Controller {
     $this->head["description"] = "The Website of Conax - Note $subject/$num";
     $this->data = [
       "note" => $note,
-      "subject" => $subject,
       "num" => $num,
     ];
     $this->view = "pages/note";
