@@ -1,11 +1,11 @@
 import { Component } from "react";
+import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import {
-  Box,
-  BottomNavigation,
-  BottomNavigationAction,
-  Skeleton,
-} from "@mui/material";
-import { Restore as RestoreIcon } from "@mui/icons-material";
+  Block as BlockIcon,
+  ArrowBack as ArrowBackIcon,
+  ArrowForward as ArrowForwardIcon,
+  MenuBook as MenuBookIcon,
+} from "@mui/icons-material";
 
 interface Props {
   subject: string;
@@ -59,37 +59,37 @@ class NoteNav extends Component {
     return (
       <Box sx={{ position: "fixed", width: "100%", bottom: 0 }}>
         <BottomNavigation showLabels>
-          {this.state.validity ? (
+          {
             <>
               <BottomNavigationAction
-                label="Previous"
-                href={previous}
-                icon={<RestoreIcon />}
+                label={this.state.validity!.previous ? "Previous" : "First"}
+                href={this.state.validity!.previous ? previous : "#"}
+                icon={
+                  this.state.validity!.previous ? (
+                    <ArrowBackIcon />
+                  ) : (
+                    <BlockIcon />
+                  )
+                }
               />
               <BottomNavigationAction
                 label="Subjects"
                 href="/notes"
-                icon={<RestoreIcon />}
+                icon={<MenuBookIcon />}
               />
               <BottomNavigationAction
-                label="Next"
-                href={next}
-                icon={<RestoreIcon />}
+                label={this.state.validity!.next ? "Next" : "Last"}
+                href={this.state.validity!.next ? next : "#"}
+                icon={
+                  this.state.validity!.next ? (
+                    <ArrowForwardIcon />
+                  ) : (
+                    <BlockIcon />
+                  )
+                }
               />
             </>
-          ) : (
-            <>
-              <Skeleton>
-                <BottomNavigationAction />
-              </Skeleton>
-              <Skeleton>
-                <BottomNavigationAction />
-              </Skeleton>
-              <Skeleton>
-                <BottomNavigationAction />
-              </Skeleton>
-            </>
-          )}
+          }
         </BottomNavigation>
       </Box>
     );
