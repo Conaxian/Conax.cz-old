@@ -10,16 +10,19 @@ class NoteNav extends Component {
           <BottomNavigationAction
             label="Previous"
             href="/notes"
+            color="primary"
             icon={<RestoreIcon />}
           />
           <BottomNavigationAction
             label="Subjects"
             href="/notes"
+            color="primary"
             icon={<RestoreIcon />}
           />
           <BottomNavigationAction
             label="Next"
             href="/notes"
+            color="primary"
             icon={<RestoreIcon />}
           />
         </BottomNavigation>
