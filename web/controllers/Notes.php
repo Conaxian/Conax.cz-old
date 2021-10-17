@@ -17,7 +17,7 @@ const SUBJECTS = [
 class NotesControl extends Controller {
   private function pathData(string $path) {
     $parts = explode("/", $path);
-    print_r($parts);
+    print_r($parts[1]);
     $subject = $this->resolveSubject($parts[1]);
 
     if (!$parts[1]) return [ "menu" => true ];
