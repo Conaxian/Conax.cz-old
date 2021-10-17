@@ -6,6 +6,8 @@ import NoteNav from "../components/NoteNav";
 
 interface Props {
   note: string;
+  subject: string;
+  num: number;
 }
 
 class NotePage extends Component {
@@ -17,7 +19,7 @@ class NotePage extends Component {
         <Box sx={{ mx: 4, flexGrow: 1, mb: 9 }}>
           <Markdown text={this.props.note} />
         </Box>
-        <NoteNav />
+        <NoteNav subject={this.props.subject} num={this.props.num} />
       </>
     );
   }
