@@ -8,6 +8,9 @@
 # Environmental variables
 .env
 
+# Local PHP config
+php.ini
+
 # Dependencies
 /node_modules
 /.pnp
