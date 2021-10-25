@@ -117,7 +117,7 @@ abstract class Resource {
         $location = preg_replace("/(^|[^\\\\])\\$$i/", '${1}' . $groups[$i], $location);
       }
 
-      $path = $_SERVER["DOCUMENT_ROOT"] . "/" . $location;
+      $path = getcwd() . "/" . $location;
       $resource = file_get_contents($path);
       if (!$resource) Router::error(404);
       Response::contentType($contentType);
