@@ -4,14 +4,14 @@ import { render as renderDom } from "react-dom";
 import App from "./App";
 
 interface PageData {
-  name: string;
+  page: string;
   data?: {};
 }
 
 async function getPage(pageData: PageData): Promise<ComponentClass> {
   let module;
 
-  switch (pageData.name) {
+  switch (pageData.page) {
     case "Home":
       module = await import("./pages/HomePage");
       break;
@@ -25,7 +25,7 @@ async function getPage(pageData: PageData): Promise<ComponentClass> {
       module = await import("./pages/NotePage");
       break;
     default:
-      throw new Error(`Unknown page: \`${pageData.name}\``);
+      throw new Error(`Unknown page: \`${pageData.page}\``);
   }
 
   return module.default;
