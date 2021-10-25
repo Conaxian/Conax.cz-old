@@ -2,12 +2,12 @@
 
 namespace Client;
 
-require "Info.php";
+require "IpInfo.php";
 
 abstract class Log {
   static function log() {
     $date = date("d-m-Y H:i:s");
-    $ipInfo = Info::get($_SERVER["REMOTE_ADDR"]);
+    $ipInfo = IpInfo::get($_SERVER["REMOTE_ADDR"]);
 
     $message = "
 [$date]
