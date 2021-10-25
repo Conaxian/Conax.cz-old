@@ -4,7 +4,7 @@ namespace Client;
 
 require __DIR__ . "/../req/Request.php";
 
-abstract class Info {
+abstract class IpInfo {
   private static function fetch(string $ip): array {
     $url = "http://ip-api.com/json/$ip?fields=66846719";
     $request = new \Req\Request($url);
