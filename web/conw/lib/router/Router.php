@@ -3,7 +3,9 @@
 namespace Router;
 
 require __DIR__ . "/../resp/Response.php";
-require __DIR__ . "/../client/ReqInfo.php";
+require __DIR__ . "/../buffer/Buffer.php";
+
+$buffer = new \Buffer\Buffer();
 
 use \Resp\Response;
 
@@ -51,12 +53,12 @@ abstract class Router {
           self::error(405, ["Allow: $allowed"]);
         }
 
+        global $buffer;
         $context = [ "groups" => $matches ];
-        $gzip = \Client\ReqInfo::gzipSupport() ? "ob_gzhandler" : null;
 
-        ob_start($gzip);
+        $buffer->start();
         ($data->resolver)($context);
-        ob_flush();
+        $buffer->flush();
         return;
       }
     }
@@ -122,8 +124,10 @@ abstract class Resource {
       $path = getcwd() . "/" . $location;
       $resource = file_get_contents($path);
       if (!$resource) Router::error(404);
+
       Response::contentType($contentType);
-      echo $resource;
+      global $buffer;
+      $buffer->sendResource($resource, $contentType);
     };
 
     $data = new RouteData($resolver, ["GET"]);
