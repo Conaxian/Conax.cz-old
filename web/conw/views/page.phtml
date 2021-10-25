@@ -16,20 +16,21 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-    href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;700&display=swap"
-    rel="stylesheet">
-    <link rel="stylesheet"
+    <link rel="preload" as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+    href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;700&display=swap">
+    <link rel="preload" as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
     href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
     <noscript>
       <?php include "noscript.phtml"; ?>
     </noscript>
-    <script src="/app/main.bundle.js"></script>
+    <script defer src="/app/main.bundle.js"></script>
     <div id="root"></div>
     <script>
-      appGlobal.load(<?= $data ?>);
+      window.onload=function(){appGlobal.load(<?= $data ?>)};
     </script>
   </body>
 </html>
