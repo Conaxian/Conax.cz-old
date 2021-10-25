@@ -10,7 +10,7 @@ try {
     if ($devMode) throw new Exception;
 
     require "conw/errors/ErrorPage.php";
-    ErrorPage::display(500);
+    Errors\ErrorPage::display(500);
   } catch (Throwable) {
     http_response_code(500);
     if ($devMode) exit;
