@@ -2,7 +2,10 @@
 
 use Router\Resource;
 
-Resource::add("^app/(.*)$", "app/$1", "text/plain");
+Resource::add("^app/(.*\.js)$", "app/$1", "application/javascript");
+Resource::add("^app/(.*\.ttf)$", "app/$1", "font/ttf");
+Resource::add("^app/(.*\.woff2)$", "app/$1", "font/woff2");
+Resource::add("^app/(.*\.txt)$", "app/$1", "text/plain");
 
 Resource::add("^styles/error\\.css$", "conw/errors/style.css", "text/css");
 
