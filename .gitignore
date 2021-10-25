@@ -1,8 +1,9 @@
 # Bundled app
 /web/app
 
-# Data and content
-/web/data
+# Data (except manifest) and content
+/web/data/*
+!/web/data/manifest.json
 /web/content
 
 # Environmental variables
