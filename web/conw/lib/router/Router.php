@@ -3,6 +3,7 @@
 namespace Router;
 
 require __DIR__ . "/../resp/Response.php";
+require __DIR__ . "/../client/ReqInfo.php";
 
 use \Resp\Response;
 
@@ -51,8 +52,9 @@ abstract class Router {
         }
 
         $context = [ "groups" => $matches ];
+        $gzip = \Client\ReqInfo::gzipSupport() ? "ob_gzhandler" : null;
 
-        ob_start();
+        ob_start($gzip);
         ($data->resolver)($context);
         ob_flush();
         return;
