@@ -19,7 +19,6 @@ const API_URL = "https://api.github.com";
 const SCHOOL_REPO = "Conaxian/School";
 
 require __DIR__ . "/../errors/ErrorPage.php";
-require __DIR__ . "/../lib/req/Request.php";
 
 abstract class SchoolNote {
   private static function resolveSubject(string $subject): ?array {
