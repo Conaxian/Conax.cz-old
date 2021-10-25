@@ -15,6 +15,11 @@ abstract class Response {
     header("Location: $url");
   }
 
+  static function notModified() {
+    http_response_code(304);
+    exit;
+  }
+
   static function contentType(string $type) {
     header("Content-Type: $type; charset=utf-8");
   }
