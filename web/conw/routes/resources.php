@@ -20,7 +20,7 @@ Resource::add(
 );
 
 Resource::add(
-  "^icon-(180|192)\\.png$",
+  "^icon-(180|192|512)\\.png$",
   "content/images/$0",
   "image/png",
 );
