@@ -20,13 +20,6 @@ class Buffer {
   private function supportedCompressions() {
     $acceptEncoding = $_SERVER["HTTP_ACCEPT_ENCODING"] ?? "";
 
-    $brotli = preg_match("/\\bbr\\b/i", $acceptEncoding);
-    if ($brotli && function_exists("brotli_compress")) {
-      $this->compression = "brotli";
-      $this->compressFunction = "brotli_compress";
-      return;
-    }
-
     $gzip = preg_match("/\\bgzip\\b/i", $acceptEncoding);
     if ($gzip) {
       $this->compression = "gzip";
@@ -48,10 +41,7 @@ class Buffer {
   }
 
   function start() {
-    if ($this->compression === "brotli") {
-      header("Content-Encoding: br");
-    }
-
+    header("Content-Encoding: {$this->compression}");
     ob_start([ $this, "filter" ]);
   }
 
