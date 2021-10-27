@@ -14,27 +14,52 @@ const CACHED_TYPES = [
 ];
 
 class Buffer {
-  public bool $gzip;
+  private ?string $compression;
+  private ?string $compressFunction;
+
+  private function supportedCompressions() {
+    $acceptEncoding = $_SERVER["HTTP_ACCEPT_ENCODING"] ?? "";
+
+    $brotli = preg_match("/\\bbr\\b/i", $acceptEncoding);
+    if ($brotli && function_exists("brotli_compress")) {
+      $this->compression = "brotli";
+      $this->compressFunction = "brotli_compress";
+      return;
+    }
+
+    $gzip = preg_match("/\\bgzip\\b/i", $acceptEncoding);
+    if ($gzip) {
+      $this->compression = "gzip";
+      $this->compressFunction = "ob_gzhandler";
+      return;
+    }
+  }
 
   function __construct() {
-    $reqEncoding = $_SERVER["HTTP_ACCEPT_ENCODING"];
-    $result = preg_match("/gzip/i", $reqEncoding);
-    $this->gzip = boolval($result);
+    $this->supportedCompressions();
   }
 
   function filter(string $buffer, int $phase) {
-    if ($this->gzip) {
-      return ob_gzhandler($buffer, $phase);
+    if ($this->compressFunction) {
+      return ($this->compressFunction)($buffer, $phase);
     } else {
       return $buffer;
     }
   }
 
   function start() {
+    if ($this->compression === "brotli") {
+      header("Content-Encoding: br");
+    }
+
     ob_start([ $this, "filter" ]);
   }
 
   function flush() {
+    $content = ob_get_contents();
+    $length = strlen($content);
+    header("Content-Length: $length");
+
     ob_flush();
   }
 
