@@ -2,6 +2,7 @@
 
 try {
   error_reporting(E_ALL);
+  header_remove("X-Powered-By");
   require "conw/main.php";
 } catch (Throwable) {
   $devMode = ($_ENV["MODE"] ?? null) !== "PRODUCTION";
