@@ -45,15 +45,17 @@ class Buffer {
       header("Content-Encoding: {$this->compression}");
     }
 
+    ob_start();
     ob_start([ $this, "filter" ]);
   }
 
   function flush() {
-    $content = ob_get_contents();
-    $length = strlen($content);
+    ob_end_flush();
+
+    $length = ob_get_length();
     header("Content-Length: $length");
 
-    ob_flush();
+    ob_end_flush();
   }
 
   function sendResource(string $resource, string $mimeType) {
