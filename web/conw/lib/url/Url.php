@@ -9,7 +9,7 @@ abstract class Url {
   static function getSelf() {
     $scheme = ($_SERVER["HTTPS"] ?? null) ? "https" : "http";
     $host = $_SERVER["SERVER_NAME"] ?? "conax.cz";
-    $port = $_SERVER["SERVER_PORT"] ??
+    $port = intval($_SERVER["SERVER_PORT"]) ??
       ($scheme === "https" ? 443 : 80);
     $url = "$scheme://$host";
     if (
