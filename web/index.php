@@ -3,11 +3,7 @@
 try {
   try {
     error_reporting(E_ALL);
-
     header_remove("X-Powered-By");
-    header_remove("Server");
-    header_remove("Pragma");
-
     require "conw/main.php";
   } catch (Throwable) {
     $devMode = ($_ENV["MODE"] ?? null) !== "PRODUCTION";
