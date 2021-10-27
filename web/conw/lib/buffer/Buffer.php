@@ -41,7 +41,10 @@ class Buffer {
   }
 
   function start() {
-    header("Content-Encoding: {$this->compression}");
+    if ($this->compression) {
+      header("Content-Encoding: {$this->compression}");
+    }
+
     ob_start([ $this, "filter" ]);
   }
 
