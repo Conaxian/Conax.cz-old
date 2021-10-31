@@ -32,7 +32,10 @@ class Markdown extends Component {
           rehypePlugins={[rehypeRaw, rehypeKatex]}
           components={{
             table: ({ children }) => (
-              <Table children={children} sx={{ maxWidth: 480 }} />
+              <Table
+                children={children}
+                sx={{ maxWidth: "min(100%, 480px)" }}
+              />
             ),
             thead: ({ children }) => <TableHead children={children} />,
             tbody: ({ children }) => <TableBody children={children} />,
