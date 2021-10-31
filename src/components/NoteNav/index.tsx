@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import {
-  Block as BlockIcon,
   ArrowBack as ArrowBackIcon,
   ArrowForward as ArrowForwardIcon,
   MenuBook as MenuBookIcon,
@@ -12,45 +11,12 @@ interface Props {
   num: number;
 }
 
-interface Validity {
-  previous: boolean;
-  next: boolean;
-}
-
-interface State {
-  validity: Validity | null;
-}
-
 function makeNoteUrl(subject: string, num: number) {
   return `/notes/${subject}/${num}`;
 }
 
-async function checkNotes(subject: string, num: number) {
-  const previousUrl = makeNoteUrl(subject, num - 1);
-  const previousResp = await fetch(previousUrl);
-  const previous = previousResp.status !== 404;
-
-  const nextUrl = makeNoteUrl(subject, num + 1);
-  const nextResp = await fetch(nextUrl);
-  const next = nextResp.status !== 404;
-
-  const validity: Validity = { previous, next };
-  return validity;
-}
-
 class NoteNav extends Component {
   props!: Readonly<Props>;
-  state: Readonly<State> = { validity: null };
-  private asyncRequest!: Promise<Validity | void> | null;
-
-  componentDidMount() {
-    this.asyncRequest = checkNotes(this.props.subject, this.props.num).then(
-      (validity) => {
-        this.asyncRequest = null;
-        this.setState({ validity });
-      }
-    );
-  }
 
   render() {
     const previous = makeNoteUrl(this.props.subject, this.props.num - 1);
@@ -58,17 +24,11 @@ class NoteNav extends Component {
 
     return (
       <Box sx={{ position: "fixed", width: "100%", bottom: 0 }}>
-        <BottomNavigation showLabels>
+        <BottomNavigation showLabels sx={{ bgcolor: "secondary.main" }}>
           <BottomNavigationAction
-            label={this.state.validity?.previous ?? true ? "Previous" : "First"}
-            href={this.state.validity?.previous ?? false ? previous : ""}
-            icon={
-              this.state.validity?.previous ?? true ? (
-                <ArrowBackIcon />
-              ) : (
-                <BlockIcon />
-              )
-            }
+            label={"Previous"}
+            href={previous}
+            icon={<ArrowBackIcon />}
           />
           <BottomNavigationAction
             label="Subjects"
@@ -76,15 +36,9 @@ class NoteNav extends Component {
             icon={<MenuBookIcon />}
           />
           <BottomNavigationAction
-            label={this.state.validity?.next ?? true ? "Next" : "Last"}
-            href={this.state.validity?.next ?? false ? next : ""}
-            icon={
-              this.state.validity?.next ?? true ? (
-                <ArrowForwardIcon />
-              ) : (
-                <BlockIcon />
-              )
-            }
+            label={"Next"}
+            href={next}
+            icon={<ArrowForwardIcon />}
           />
         </BottomNavigation>
       </Box>
