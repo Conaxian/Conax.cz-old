@@ -31,7 +31,12 @@ abstract class SchoolNote {
     return null;
   }
 
-  private static function requestNote(string $name, string $num) {
+  private static function requestNote(
+    string $subject,
+    string $name,
+    string|int $num,
+    bool $lenient,
+  ) {
     $endpoint = "/repos/" . SCHOOL_REPO .
       "/contents/2021_22/$name/notes/$num.md";
     $url = API_URL . $endpoint;
@@ -42,8 +47,12 @@ abstract class SchoolNote {
       "Authorization: token $token",
     ]);
 
-    if ($request->code() !== 200) {
+    if ($lenient and $request->code() !== 200 and ($num = intval($num)) > 1) {
+      return self::requestNote($subject, $name, $num - 1, false);
+    } else if ($request->code() !== 200) {
       Errors\ErrorPage::display(404);
+    } else if (!$lenient) {
+      Resp\Response::redirect("/notes/$subject/$num");
     }
 
     return $request->body();
@@ -52,8 +61,11 @@ abstract class SchoolNote {
   static function process(string $subject, string $num) {
     [$name, $abbr] = self::resolveSubject($subject);
 
+    $num = intval($num);
+    if (!$num) Resp\Response::redirect("/notes/$subject/1");
+
     if (!$name || !(
-      $note = self::requestNote($name, $num)
+      $note = self::requestNote($subject, $name, $num, true)
     )) {
       Errors\ErrorPage::display(404);
     }
@@ -71,5 +83,3 @@ abstract class SchoolNote {
     );
   }
 }
-
-?>
