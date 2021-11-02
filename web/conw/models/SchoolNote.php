@@ -54,7 +54,7 @@ abstract class SchoolNote {
       Errors\ErrorPage::display(404);
     } else if (!$lenient) {
       Resp\Response::redirect(
-        "/notes/$subject/$num" + ($src ? "/source" : "")
+        "/notes/$subject/$num" . ($src ? "/source" : "")
       );
     }
 
@@ -66,7 +66,7 @@ abstract class SchoolNote {
 
     $num = intval($num);
     if (!$num) Resp\Response::redirect(
-      "/notes/$subject/1" + ($src ? "/source" : "")
+      "/notes/$subject/1" . ($src ? "/source" : "")
     );
 
     if (!$name || !(
