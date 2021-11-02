@@ -52,9 +52,13 @@ Route::get("^notes$", function() {
   );
 });
 
-Route::get("^notes/([^/]+)(?:/([0-9]+))?$", function($context) {
+Route::get("^notes/([^/]+)(?:/([0-9]+)(?:/(source))?)?$", function($context) {
   require __DIR__ . "/../models/SchoolNote.php";
-  SchoolNote::process($context["groups"][1], $context["groups"][2] ?? "1");
+  SchoolNote::process(
+    $context["groups"][1],
+    $context["groups"][2] ?? "1",
+    boolval($context["groups"][3] ?? false),
+  );
 });
 
 ?>
