@@ -20,8 +20,10 @@ abstract class Response {
     exit;
   }
 
-  static function contentType(string $type) {
-    header("Content-Type: $type; charset=utf-8");
+  static function contentType(string $type, bool $includeEncoding = true) {
+    $header = "Content-Type: $type";
+    if ($includeEncoding) $header .= "; charset=utf-8";
+    header($header);
   }
 
   static function jsonApi(array $array) {
