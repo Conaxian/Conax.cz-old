@@ -35,6 +35,7 @@ abstract class SchoolNote {
     string $subject,
     string $name,
     string|int $num,
+    bool $src,
     bool $lenient,
   ) {
     $endpoint = "/repos/" . SCHOOL_REPO .
@@ -48,26 +49,36 @@ abstract class SchoolNote {
     ]);
 
     if ($lenient and $request->code() !== 200 and ($num = intval($num)) > 1) {
-      return self::requestNote($subject, $name, $num - 1, false);
+      return self::requestNote($subject, $name, $num - 1, $src, false);
     } else if ($request->code() !== 200) {
       Errors\ErrorPage::display(404);
     } else if (!$lenient) {
-      Resp\Response::redirect("/notes/$subject/$num");
+      Resp\Response::redirect(
+        "/notes/$subject/$num" + ($src ? "/source" : "")
+      );
     }
 
     return $request->body();
   }
 
-  static function process(string $subject, string $num) {
+  static function process(string $subject, string $num, bool $src) {
     [$name, $abbr] = self::resolveSubject($subject);
 
     $num = intval($num);
-    if (!$num) Resp\Response::redirect("/notes/$subject/1");
+    if (!$num) Resp\Response::redirect(
+      "/notes/$subject/1" + ($src ? "/source" : "")
+    );
 
     if (!$name || !(
-      $note = self::requestNote($subject, $name, $num, true)
+      $note = self::requestNote($subject, $name, $num, $src, true)
     )) {
       Errors\ErrorPage::display(404);
+    }
+
+    if ($src) {
+      Resp\Response::contentType("text/markdown");
+      echo $note;
+      return;
     }
 
     Views\View::show(
