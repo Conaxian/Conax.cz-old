@@ -80,7 +80,7 @@ abstract class Route {
     callable $resolver,
     array $data = [],
   ) {
-    $pattern = "{". $pattern . "}i";
+    $pattern = "{". preg_replace("/\\s+/", "", $pattern) . "}i";
     $data = new RouteData(
       $resolver,
       $data["methods"] ?? [],
@@ -112,20 +112,28 @@ abstract class Resource {
     string $pattern,
     string $location,
     string $contentType,
+    bool $includeEncoding = true,
   ) {
-    $pattern = "{". $pattern . "}i";
+    $pattern = "{". preg_replace("/\\s+/", "", $pattern) . "}i";
 
-    $resolver = function($context) use ($location, $contentType) {
+    $resolver = function($context) use (
+      $location,
+      $contentType,
+      $includeEncoding,
+    ) {
       $groups = $context["groups"];
       for ($i = 0; $i < count($groups); $i++) {
-        $location = preg_replace("/(^|[^\\\\])\\$$i/", '${1}' . $groups[$i], $location);
+        $location = preg_replace(
+          "/(^|[^\\\\])\\$$i/", '${1}' . $groups[$i],
+          $location,
+        );
       }
 
       $path = getcwd() . "/" . $location;
       $resource = file_get_contents($path);
       if (!$resource) Router::error(404);
 
-      Response::contentType($contentType);
+      Response::contentType($contentType, $includeEncoding);
       global $buffer;
       $buffer->sendResource($resource, $contentType);
     };
@@ -140,7 +148,7 @@ abstract class Redirect {
     string $pattern,
     string $url,
   ) {
-    $pattern = "{" . $pattern . "}i";
+    $pattern = "{" . preg_replace("/\\s+/", "", $pattern) . "}i";
 
     $resolver = function($context) use ($url) {
       $groups = $context["groups"];
