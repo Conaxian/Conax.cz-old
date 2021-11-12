@@ -2,8 +2,8 @@
 
 namespace Router;
 
-require __DIR__ . "/../resp/Response.php";
-require __DIR__ . "/../buffer/Buffer.php";
+require_once __DIR__ . "/../resp/Response.php";
+require_once __DIR__ . "/../buffer/Buffer.php";
 
 $buffer = new \Buffer\Buffer();
 
@@ -26,7 +26,8 @@ abstract class Router {
 
   public static function error(int $code, array $headers = []) {
     require __DIR__ . "/../../errors/ErrorPage.php";
-    \Errors\ErrorPage::display($code, $headers);
+    $error = new \Errors\ErrorPage($code);
+    $error->display($headers);
   }
 
   private static function getRequestPath() {
