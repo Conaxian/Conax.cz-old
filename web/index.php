@@ -4,13 +4,14 @@ try {
   try {
     error_reporting(E_ALL);
     header_remove("X-Powered-By");
-    require "conw/main.php";
+    require_once "conw/main.php";
   } catch (Throwable) {
     $devMode = ($_ENV["MODE"] ?? null) !== "PRODUCTION";
     if ($devMode) throw new Exception;
 
-    require "conw/errors/ErrorPage.php";
-    Errors\ErrorPage::display(500);
+    require_once "conw/errors/ErrorPage.php";
+    $error = new Errors\ErrorPage(500);
+    $error->display();
   }
 } catch (Throwable) {
   http_response_code(500);
