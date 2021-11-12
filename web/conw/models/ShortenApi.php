@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
-require __DIR__ . "/../lib/url/Url.php";
-require __DIR__ . "/../errors/ErrorPage.php";
+require_once __DIR__ . "/../lib/url/Url.php";
+require_once __DIR__ . "/../errors/ErrorPage.php";
 
 abstract class ShortenApi {
   private static function setUrl(string $url) {
@@ -20,7 +20,8 @@ abstract class ShortenApi {
   static function process() {
     $url = $_GET["url"] ?? null;
     if (!$url or !filter_var($url, FILTER_VALIDATE_URL)) {
-      Errors\ErrorPage::display(400);
+      $error = new Errors\ErrorPage(400);
+      $error->display();
     }
 
     $id = self::setUrl($url);

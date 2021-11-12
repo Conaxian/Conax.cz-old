@@ -9,7 +9,8 @@ abstract class ShortUrl {
     $url = json_decode($json, true)[$id];
 
     if (!$url) {
-      Errors\ErrorPage::display(404);
+      $error = new Errors\ErrorPage(404);
+      $error->display();
     }
 
     Resp\Response::redirect($url);

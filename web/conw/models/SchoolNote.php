@@ -18,7 +18,7 @@ const API_URL = "https://api.github.com";
 
 const SCHOOL_REPO = "Conaxian/School";
 
-require __DIR__ . "/../errors/ErrorPage.php";
+require_once __DIR__ . "/../errors/ErrorPage.php";
 
 abstract class SchoolNote {
   private static function resolveSubject(string $subject): ?array {
@@ -51,7 +51,8 @@ abstract class SchoolNote {
     if ($lenient and $request->code() !== 200 and ($num = intval($num)) > 1) {
       return self::requestNote($subject, $name, $num - 1, $src, false);
     } else if ($request->code() !== 200) {
-      Errors\ErrorPage::display(404);
+      $error = new Errors\ErrorPage(404);
+      $error->display();
     } else if (!$lenient) {
       Resp\Response::redirect(
         "/notes/$subject/$num" . ($src ? "/source" : "")
@@ -72,7 +73,8 @@ abstract class SchoolNote {
     if (!$name || !(
       $note = self::requestNote($subject, $name, $num, $src, true)
     )) {
-      Errors\ErrorPage::display(404);
+      $error = new Errors\ErrorPage(404);
+      $error->display();
     }
 
     if ($src) {
