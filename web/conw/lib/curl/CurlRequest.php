@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Req;
+namespace Curl;
 
-class Request {
+class CurlRequest {
   private ?array $response = null;
 
   function __construct(public string $url, public array $headers = []) {}
