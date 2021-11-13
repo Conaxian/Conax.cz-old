@@ -23,19 +23,10 @@ class ErrorPage {
     return ob_get_clean();
   }
 
-  function display(array $headers = []) {
-    if (ob_get_contents()) ob_clean();
-
-    http_response_code($this->code);
-    foreach ($headers as $header) {
-      header($header);
-    }
-
-    $title = $this->getName();
+  function show() {
+    $name = $this->getName();
     $body = $this->getBody();
-
-    include "error.phtml";
-    exit;
+    require "error.phtml";
   }
 }
 
