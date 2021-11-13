@@ -18,6 +18,9 @@ class View {
   }
 
   function show() {
+    $title = $this->title;
+    $keywords = $this->keywords;
+    $description = $this->description;
     $data = json_encode([ "page" => $this->page, "data" => $this->data ]);
     $noscript = $this->getNoscript();
     require "page.phtml";
