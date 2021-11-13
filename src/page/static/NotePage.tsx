@@ -1,8 +1,8 @@
 import { Component } from "react";
 import { Box } from "@mui/material";
 
-import Markdown from "../components/Markdown";
-import NoteNav from "../components/NoteNav";
+import Markdown from "../../components/Markdown";
+import NoteNav from "../../components/NoteNav";
 
 interface Props {
   note: string;

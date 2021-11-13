@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Box } from "@mui/material";
 
-import SubjectsList from "../components/SubjectsList";
+import SubjectsList from "../../components/SubjectsList";
 
 class NotePage extends Component {
   render() {
