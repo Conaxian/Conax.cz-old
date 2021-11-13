@@ -94,7 +94,7 @@ abstract class SchoolNote {
       $response->send();
     }
 
-    $view = new \Views\View(
+    $view = \Views\View::static(
       title: "Conax | Note $abbr/$num",
       keywords: "conax, programming",
       description: "The Website of Conax - Note $abbr/$num",
@@ -103,7 +103,7 @@ abstract class SchoolNote {
         "note" => $note,
         "subject" => $subject,
         "num" => intval($num),
-      ]
+      ],
     );
     $response->viewPage($view);
     $response->send();
