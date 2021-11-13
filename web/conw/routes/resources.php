@@ -87,4 +87,13 @@ Route::resource(
   includeEncoding: false,
 );
 
+# Game resources
+
+Route::resource(
+  "^game/res/(.*\\.png)",
+  path: "content/game/images/$1",
+  mimeType: "image/png",
+  includeEncoding: false,
+)
+
 ?>
