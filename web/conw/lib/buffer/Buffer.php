@@ -14,13 +14,13 @@ const CACHED_TYPES = [
 ];
 
 class Buffer {
-  private ?string $compression;
+  public ?string $compression;
   private ?string $compressFunction;
 
   private function supportedCompressions() {
     $acceptEncoding = $_SERVER["HTTP_ACCEPT_ENCODING"] ?? "";
 
-    $gzip = preg_match("/\\bgzip\\b/i", $acceptEncoding);
+    $gzip = preg_match('/\bgzip\b/i', $acceptEncoding);
     if ($gzip) {
       $this->compression = "gzip";
       $this->compressFunction = "ob_gzhandler";
@@ -41,42 +41,20 @@ class Buffer {
   }
 
   function start() {
-    if ($this->compression) {
-      header("Content-Encoding: {$this->compression}");
-    }
-
     ob_start();
     ob_start([ $this, "filter" ]);
   }
 
   function flush() {
-    ob_end_flush();
+    ob_start();
 
+    ob_end_flush();
+    ob_end_flush();
     $length = ob_get_length();
-    header("Content-Length: $length");
 
-    ob_end_flush();
+    $content = ob_get_clean();
+    return [$content, $length];
   }
-
-  function sendResource(string $resource, string $mimeType) {
-    if (!array_key_exists($mimeType, CACHED_TYPES)) {
-      echo $resource;
-      return;
-    }
-
-    $age = CACHED_TYPES[$mimeType];
-    $etag = '"' . md5($resource) . '"';
-
-    header("Cache-Control: max-age=$age");
-    header("ETag: $etag");
-
-    if (($_SERVER["HTTP_IF_NONE_MATCH"] ?? null) === $etag) {
-      \Resp\Response::notModified();
-    }
-
-    echo $resource;
-  }
-
 }
 
 ?>
