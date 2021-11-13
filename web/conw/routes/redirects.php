@@ -13,4 +13,9 @@ Route::redirect(
   "&scope=bot+applications.commands",
 );
 
+Route::redirect(
+  "^school((?:/.*)?)$",
+  url: "/notes$1",
+);
+
 ?>

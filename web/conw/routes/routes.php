@@ -46,7 +46,7 @@ Route::get("^a/([0-9a-z-_]{4})$",
 # School Notes
 
 Route::staticPage(
-  "^(notes|school)$",
+  "^notes$",
   title: "Conax | Notes",
   keywords: "conax, programming",
   description: "The Website of Conax - Notes",
@@ -54,7 +54,7 @@ Route::staticPage(
 );
 
 Route::get(
-  "^(?:notes|school)/([^/]+)(?:/([0-9]+)(?:/(source))?)?$",
+  "^notes/([^/]+)(?:/([0-9]+)(?:/(source))?)?$",
   function($request, $response) {
     require_once __DIR__ . "/../models/SchoolNote.php";
     \Models\SchoolNote::process(
