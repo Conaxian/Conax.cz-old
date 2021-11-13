@@ -125,7 +125,7 @@ abstract class Route {
     use ($title, $keywords, $description, $page) {
       $response->startBody();
 
-      $view = new \Views\View($title, $keywords, $description, $page);
+      $view = \Views\View::static($title, $keywords, $description, $page);
       $view->show();
 
       $response->endBody();
