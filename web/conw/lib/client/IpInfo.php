@@ -2,7 +2,7 @@
 
 namespace Client;
 
-require __DIR__ . "/../curl/CurlRequest.php";
+require_once __DIR__ . "/../curl/CurlRequest.php";
 
 abstract class IpInfo {
   private static function fetch(string $ip): array {
