@@ -9,9 +9,10 @@ try {
     $devMode = ($_ENV["MODE"] ?? null) !== "PRODUCTION";
     if ($devMode) throw new Exception;
 
+    http_response_code(500);
     require_once "conw/errors/ErrorPage.php";
-    $error = new Errors\ErrorPage(500);
-    $error->display();
+    $error = new \Errors\ErrorPage(500);
+    $error->show();
   }
 } catch (Throwable) {
   http_response_code(500);
