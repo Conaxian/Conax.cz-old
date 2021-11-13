@@ -1,5 +1,11 @@
 <?php declare(strict_types=1);
 
+namespace Models;
+
+require_once __DIR__ . "/../lib/resp/Response.php";
+require_once __DIR__ . "/../lib/curl/CurlRequest.php";
+require_once __DIR__ . "/../views/View.php";
+
 const SUBJECTS = [
   "ZSV?|(Basic[ _]?)?Humanities" => ["BasicHumanities", "ZSV"],
   "BI|Biology" => ["Biology", "BI"],
@@ -18,8 +24,6 @@ const API_URL = "https://api.github.com";
 
 const SCHOOL_REPO = "Conaxian/School";
 
-require_once __DIR__ . "/../errors/ErrorPage.php";
-
 abstract class SchoolNote {
   private static function resolveSubject(string $subject): ?array {
     foreach (SUBJECTS as $pattern => $info) {
@@ -32,6 +36,7 @@ abstract class SchoolNote {
   }
 
   private static function requestNote(
+    \Resp\Response $response,
     string $subject,
     string $name,
     string|int $num,
@@ -43,47 +48,53 @@ abstract class SchoolNote {
     $url = API_URL . $endpoint;
     $token = $_ENV["GITHUB_AUTH_TOKEN"];
 
-    $request = new Req\Request($url, [
+    $request = new \Curl\CurlRequest($url, [
       "Accept: application/vnd.github.v3.raw",
       "Authorization: token $token",
     ]);
 
     if ($lenient and $request->code() !== 200 and ($num = intval($num)) > 1) {
-      return self::requestNote($subject, $name, $num - 1, $src, false);
-    } else if ($request->code() !== 200) {
-      $error = new Errors\ErrorPage(404);
-      $error->display();
-    } else if (!$lenient) {
-      Resp\Response::redirect(
-        "/notes/$subject/$num" . ($src ? "/source" : "")
+      return self::requestNote(
+        $response, $subject, $name, $num - 1, $src, false
       );
+    } else if ($request->code() !== 200) {
+      $response->errorPage(404);
+      $response->send();
+    } else if (!$lenient) {
+      $response->redirect("/notes/$subject/$num" . ($src ? "/source" : ""));
+      $response->send();
     }
 
     return $request->body();
   }
 
-  static function process(string $subject, string $num, bool $src) {
+  static function process(
+    \Resp\Response $response,
+    string $subject,
+    string $num,
+    bool $src,
+  ) {
     [$name, $abbr] = self::resolveSubject($subject);
 
     $num = intval($num);
-    if (!$num) Resp\Response::redirect(
-      "/notes/$subject/1" . ($src ? "/source" : "")
-    );
+    if (!$num) {
+      $response->redirect("/notes/$subject/1" . ($src ? "/source" : ""));
+      $response->send();
+    }
 
     if (!$name || !(
-      $note = self::requestNote($subject, $name, $num, $src, true)
+      $note = self::requestNote($response, $subject, $name, $num, $src, true)
     )) {
-      $error = new Errors\ErrorPage(404);
-      $error->display();
+      $response->errorPage(404);
+      $response->send();
     }
 
     if ($src) {
-      Resp\Response::contentType("text/markdown");
-      echo $note;
-      return;
+      $response->resourceBody($note, "text/markdown");
+      $response->send();
     }
 
-    Views\View::show(
+    $view = new \Views\View(
       title: "Conax | Note $abbr/$num",
       keywords: "conax, programming",
       description: "The Website of Conax - Note $abbr/$num",
@@ -94,5 +105,7 @@ abstract class SchoolNote {
         "num" => intval($num),
       ]
     );
+    $response->viewPage($view);
+    $response->send();
   }
 }
