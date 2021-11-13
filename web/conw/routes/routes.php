@@ -3,6 +3,7 @@
 namespace Routes;
 
 require_once __DIR__ . "/../lib/router/Route.php";
+require_once __DIR__ . "/../views/View.php";
 
 require_once "resources.php";
 require_once "redirects.php";
@@ -33,14 +34,14 @@ Route::get("^api/shorten$",
   function($request, $response) {
     require_once __DIR__ . "/../models/ShortenApi.php";
     \Models\ShortenApi::process($response);
-  }
+  },
 );
 
 Route::get("^a/([0-9a-z-_]{4})$",
   function($request, $response) {
     require_once __DIR__ . "/../models/ShortUrl.php";
     \Models\ShortUrl::process($response, $request->route[1]);
-  }
+  },
 );
 
 # School Notes
@@ -63,7 +64,23 @@ Route::get(
       $request->route[2] ?? "1",
       boolval($request->route[3] ?? false),
     );
-  }
+  },
+);
+
+# Experimental
+
+Route::get(
+  "^game$",
+  function($request, $response) {
+    $view = \Views\View::app(
+      title: "Conax | Game",
+      keywords: "conax, game",
+      description: "An experimental game",
+      page: "Game",
+    );
+    $response->viewPage($view);
+    $response->send();
+  },
 );
 
 Route::final();
