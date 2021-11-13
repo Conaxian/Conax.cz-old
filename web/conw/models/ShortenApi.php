@@ -1,37 +1,42 @@
 <?php declare(strict_types=1);
 
-require __DIR__ . "/../lib/url/Url.php";
-require __DIR__ . "/../errors/ErrorPage.php";
+namespace Models;
+
+require_once __DIR__ . "/../lib/resp/Response.php";
+require_once __DIR__ . "/../lib/url/Url.php";
 
 abstract class ShortenApi {
   private static function setUrl(string $url) {
     $json = file_get_contents("data/short-url/urls.json");
     $urls = json_decode($json, true);
-    do {
-      $id = Url\Url::genId(4);
-    } while (array_key_exists($id, $urls));
 
+    do {
+      $id = \Url\Url::genId(4);
+    } while (array_key_exists($id, $urls));
     $urls[$id] = $url;
+
     $json = json_encode($urls);
     file_put_contents("data/short-url/urls.json", $json);
     return $id;
   }
 
-  static function process() {
+  static function process(\Resp\Response $response) {
     $url = $_GET["url"] ?? null;
     if (!$url or !filter_var($url, FILTER_VALIDATE_URL)) {
-      Errors\ErrorPage::display(400);
+      $response->errorPage(400);
+      $response->send();
     }
 
     $id = self::setUrl($url);
-    $shortUrl = Url\Url::getSelf() . "/a/$id";
+    $shortUrl = \Url\Url::getSelf() . "/a/$id";
 
-    Resp\Response::created($shortUrl);
-    Resp\Response::jsonApi([
+    $response->created($shortUrl);
+    $response->jsonBody([
       "success" => true,
       "id" => $id,
       "url" => $shortUrl,
     ]);
+    $response->send();
   }
 }
 

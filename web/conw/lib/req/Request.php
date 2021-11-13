@@ -3,49 +3,24 @@
 namespace Req;
 
 class Request {
-  private ?array $response = null;
+  public string $path;
+  public string $method;
+  public array $route = [];
 
-  function __construct(public string $url, public array $headers = []) {}
+  private function setRequestPath() {
+    $url = $_SERVER["REQUEST_URI"];
+    $matches = [];
+    preg_match("/[^\/]*([^?]*)\??.*/", $url, $matches);
 
-  private function execute() {
-    $curl = curl_init();
-    curl_setopt_array($curl, [
-      CURLOPT_URL => $this->url,
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_HTTPHEADER => $this->headers,
-      CURLOPT_USERAGENT => "curl/7.72.0",
-    ]);
-
-    if (PHP_OS_FAMILY === "Windows") {
-      curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-    }
-
-    $this->response = [
-      "body" => curl_exec($curl),
-      "code" => curl_getinfo($curl, CURLINFO_HTTP_CODE),
-    ];
+    $this->path = $matches[1] ?? "";
+    $this->path = urldecode($this->path);
+    $this->path = trim($this->path, "/");
+    $this->path = preg_replace("{/+}", "/", $this->path);
   }
 
-  private function getField(string $key) {
-    if (!$this->response) $this->execute();
-    return $this->response[$key];
-  }
-
-  function code(): int {
-    return $this->getField("code");
-  }
-
-  function body(): string {
-    return $this->getField("body");
-  }
-
-  function json() {
-    $body = $this->body();
-    return json_decode($body, true);
-  }
-
-  function reset() {
-    $this->response = null;
+  function __construct() {
+    $this->setRequestPath();
+    $this->method = $_SERVER["REQUEST_METHOD"];
   }
 }
 

@@ -3,11 +3,7 @@
 namespace Env;
 
 class Environment {
-  public string $envPath;
-
-  function __construct(string $envPath) {
-    $this->envPath = $envPath;
-  }
+  function __construct(public string $envPath) {}
 
   function load() {
     $envVars = file_get_contents($this->envPath);

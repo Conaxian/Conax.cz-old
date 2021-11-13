@@ -2,20 +2,28 @@
 
 namespace Views;
 
-use Resp\Response;
+class View {
+  function __construct(
+    public string $title,
+    public string $keywords,
+    public string $description,
+    public string $page,
+    public array $data = [],
+  ) {}
 
-abstract class View {
-  static function show(
-    string $title,
-    string $keywords,
-    string $description,
-    string $page,
-    array $data = [],
-  ) {
-    $data = json_encode([ "page" => $page, "data" => $data ]);
-    Response::contentType("text/html");
+  private function getNoscript() {
+    ob_start();
+    require "noscript.phtml";
+    return ob_get_clean();
+  }
+
+  function show() {
+    $title = $this->title;
+    $keywords = $this->keywords;
+    $description = $this->description;
+    $data = json_encode([ "page" => $this->page, "data" => $this->data ]);
+    $noscript = $this->getNoscript();
     require "page.phtml";
-    exit;
   }
 }
 

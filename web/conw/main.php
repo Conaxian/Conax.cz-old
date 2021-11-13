@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-require "lib/env/Environment.php";
+require_once "lib/env/Environment.php";
 $env = new Env\Environment(".env");
 $env->load();
 
@@ -10,12 +10,9 @@ ini_set("display_startup_errors", $displayErrors);
 
 session_start();
 
-require "lib/client/Log.php";
+require_once "lib/client/Log.php";
 Client\Log::log();
 
-require "lib/router/Router.php";
-require "routes/routes.php";
-
-Router\Router::process();
+require_once "routes/routes.php";
 
 ?>

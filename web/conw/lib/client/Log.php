@@ -2,7 +2,7 @@
 
 namespace Client;
 
-require "IpInfo.php";
+require_once "IpInfo.php";
 
 abstract class Log {
   static function log() {

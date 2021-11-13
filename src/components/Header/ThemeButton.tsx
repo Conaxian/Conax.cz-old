@@ -14,10 +14,7 @@ class ThemeButton extends Component {
     return (
       <ThemeContext.Consumer>
         {({ theme, toggleTheme }) => (
-          <IconButton
-            color="inherit"
-            onClick={toggleTheme}
-          >
+          <IconButton color="inherit" onClick={toggleTheme}>
             {theme === "light" ? <LightModeIcon /> : <DarkModeIcon />}
           </IconButton>
         )}

@@ -1,60 +1,71 @@
 <?php declare(strict_types=1);
 
+namespace Routes;
+
+require_once __DIR__ . "/../lib/router/Route.php";
+
+require_once "resources.php";
+require_once "redirects.php";
+
 use Router\Route;
 
-require "resources.php";
-require "redirects.php";
+# General
 
-require __DIR__ . "/../views/View.php";
+Route::staticPage(
+  "^(home)?$",
+  title: "Conax",
+  keywords: "conax, programming",
+  description: "The Website of Conax - Home",
+  page: "Home",
+);
 
-use Views\View;
+Route::staticPage(
+  "^about$",
+  title: "Conax | About",
+  keywords: "conax, programming",
+  description: "The Website of Conax - About",
+  page: "About",
+);
 
-// General
+# URL Shortener
 
-Route::get("^(home)?$", function() {
-  View::show(
-    title: "Conax",
-    keywords: "conax, programming",
-    description: "The Website of Conax - Home",
-    page: "Home",
-  );
-});
+Route::get("^api/shorten$",
+  function($request, $response) {
+    require_once __DIR__ . "/../models/ShortenApi.php";
+    \Models\ShortenApi::process($response);
+  }
+);
 
-Route::get("^about$", function() {
-  View::show(
-    title: "Conax | About",
-    keywords: "conax, programming",
-    description: "The Website of Conax - About",
-    page: "About",
-  );
-});
+Route::get("^a/([0-9a-z-_]{4})$",
+  function($request, $response) {
+    require_once __DIR__ . "/../models/ShortUrl.php";
+    \Models\ShortUrl::process($response, $request->route[1]);
+  }
+);
 
-// URL Shortener
+# School Notes
 
-Route::get("^api/shorten$", function() {
-  require __DIR__ . "/../models/ShortenApi.php";
-  ShortenApi::process();
-});
+Route::staticPage(
+  "^notes$",
+  title: "Conax | Notes",
+  keywords: "conax, programming",
+  description: "The Website of Conax - Notes",
+  page: "NoteMenu",
+);
 
-Route::get("^a/([0-9a-z-_]{4})$", function($context) {
-  require __DIR__ . "/../models/ShortUrl.php";
-  ShortUrl::process($context["groups"][1]);
-});
+Route::get(
+  "^notes/([^/]+)(?:/([0-9]+)(?:/(source))?)?$",
+  function($request, $response) {
+    require_once __DIR__ . "/../models/SchoolNote.php";
+    \Models\SchoolNote::process(
+      $response,
+      $request->route[1],
+      $request->route[2] ?? "1",
+      boolval($request->route[3] ?? false),
+    );
+  }
+);
 
-// School Notes
-
-Route::get("^notes$", function() {
-  View::show(
-    title: "Conax | Notes",
-    keywords: "conax, programming",
-    description: "The Website of Conax - Notes",
-    page: "NoteMenu",
-  );
-});
-
-Route::get("^notes/([^/]+)(?:/([0-9]+))?$", function($context) {
-  require __DIR__ . "/../models/SchoolNote.php";
-  SchoolNote::process($context["groups"][1], $context["groups"][2] ?? "1");
-});
+Route::final();
 
 ?>

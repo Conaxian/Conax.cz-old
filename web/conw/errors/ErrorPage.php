@@ -9,27 +9,24 @@ const ERROR_CODES = [
   500 => "Internal Server Error",
 ];
 
-abstract class ErrorPage {
-  static function getText(int $code) {
-    $text = ERROR_CODES[$code];
-    return "{$code} $text";
+class ErrorPage {
+  function __construct(public int $code) {}
+
+  private function getName() {
+    $text = ERROR_CODES[$this->code];
+    return "{$this->code} $text";
   }
 
-  static function getBody(int $code) {
-    include "bodies/{$code}.phtml";
+  private function getBody() {
+    ob_start();
+    require "bodies/{$this->code}.phtml";
+    return ob_get_clean();
   }
 
-  static function display(int $code, array $headers = []) {
-    if (ob_get_contents()) ob_clean();
-
-    http_response_code($code);
-    foreach ($headers as $header) {
-      header($header);
-    }
-
-    $title = self::getText($code);
-    include "error.phtml";
-    exit;
+  function show() {
+    $name = $this->getName();
+    $body = $this->getBody();
+    require "error.phtml";
   }
 }
 
