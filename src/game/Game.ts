@@ -22,7 +22,7 @@ export default class Game {
     root.append(this.app.view);
     this.app.view.style.position = "absolute";
     this.app.view.style.inset = "0";
-    root.style.cursor = "url('game/res/gui/cursor.png'), auto";
+    root.style.cursor = "url('game/res/gui/cursor.png') 8 8, auto";
   }
 
   async run() {
