@@ -12,7 +12,7 @@ export default class Color {
   }
 
   get hex() {
-    return (this.r << 16) + (this.g << 8) + this.b
+    return (this.r << 16) + (this.g << 8) + this.b;
   }
 
   get css() {
@@ -23,7 +23,8 @@ export default class Color {
     switch (hint) {
       case "string":
         return this.css;
-      case "number": case "default":
+      case "number":
+      case "default":
         return this.hex;
     }
   }
