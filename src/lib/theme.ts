@@ -1,5 +1,7 @@
 import { createTheme } from "@mui/material";
 
+import { css as rgb } from "./Color";
+
 const commonTheme = {
   typography: {
     fontFamily: [
@@ -23,21 +25,21 @@ export const lightTheme = createTheme({
     mode: "light",
 
     primary: {
-      main: "#42a5f5",
+      main: rgb(66, 165, 245),
     },
 
     secondary: {
-      main: "#66bb6a",
+      main: rgb(102, 187, 106),
     },
 
     background: {
-      default: "#ffffff",
-      paper: "#f2f2ff",
+      default: rgb(255, 255, 255),
+      paper: rgb(242, 242, 255),
     },
 
     text: {
-      primary: "#000000",
-      secondary: "#000000",
+      primary: rgb(0, 0, 0),
+      secondary: rgb(0, 0, 0),
     },
   },
 });
@@ -49,22 +51,22 @@ export const darkTheme = createTheme({
     mode: "dark",
 
     primary: {
-      main: "#1976d2",
-      contrastText: "#ffffff",
+      main: rgb(25, 118, 210),
+      contrastText: rgb(255, 255, 255),
     },
 
     secondary: {
-      main: "#388e3c",
+      main: rgb(56, 142, 60),
     },
 
     background: {
-      default: "#222226",
-      paper: "#2e2e37",
+      default: rgb(34, 34, 38),
+      paper: rgb(46, 46, 55),
     },
 
     text: {
-      primary: "#ffffff",
-      secondary: "#ffffff",
+      primary: rgb(255, 255, 255),
+      secondary: rgb(255, 255, 255),
     },
   },
 });
