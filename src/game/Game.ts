@@ -1,15 +1,19 @@
 import { Application } from "pixi.js";
 
+import Color from "../lib/Color";
+
 import main from "./main";
 
 export default class Game {
   app: Application;
 
   constructor() {
+    const backgroundColor = new Color(144, 192, 255).hex;
+
     this.app = new Application({
       width: window.innerWidth,
       height: window.innerHeight,
-      backgroundColor: 0x90c0ff,
+      backgroundColor,
       resizeTo: window,
     });
   }
