@@ -86,7 +86,7 @@ export default class VisibleObject extends BaseObject implements Coordinates {
     if (resource) return resource.texture;
 
     const promise = new Promise<Texture>((resolve) => {
-      Loader.shared.add(path, `game/res/${path}.png`).load((loader, res) => {
+      Loader.shared.add(path, `game/res/${path}.png`).load((_, res) => {
         const texture = res[path].texture!;
         resolve(texture);
       });
