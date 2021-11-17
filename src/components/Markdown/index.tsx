@@ -15,9 +15,9 @@ interface Props {
 }
 
 class Markdown extends Component {
-  props!: Readonly<Props>;
+  override props!: Readonly<Props>;
 
-  render() {
+  override render() {
     let text = this.props.text.replace(/$/gm, "  ");
 
     return (

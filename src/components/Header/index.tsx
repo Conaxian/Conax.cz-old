@@ -7,7 +7,7 @@ import AboutButton from "./AboutButton";
 import ThemeButton from "./ThemeButton";
 
 class Header extends Component {
-  render() {
+  override render() {
     return (
       <>
         <AppBar position="fixed" sx={{ flexGrow: 1, bgcolor: "primary.main" }}>

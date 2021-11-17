@@ -8,9 +8,9 @@ import {
 import { ThemeContext } from "../Theme";
 
 class ThemeButton extends Component {
-  static contextType = ThemeContext;
+  static override contextType = ThemeContext;
 
-  render() {
+  override render() {
     return (
       <ThemeContext.Consumer>
         {({ theme, toggleTheme }) => (

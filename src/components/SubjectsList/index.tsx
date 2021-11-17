@@ -10,7 +10,7 @@ class SubjectsList extends Component {
     }
   }
 
-  render() {
+  override render() {
     const buttons = Array.from(this.makeButtons());
 
     return (

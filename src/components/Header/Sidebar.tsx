@@ -9,7 +9,7 @@ interface State {
 }
 
 class Sidebar extends Component {
-  state: Readonly<State>;
+  override state: Readonly<State>;
 
   constructor(props: object) {
     super(props);
@@ -22,7 +22,7 @@ class Sidebar extends Component {
     };
   }
 
-  render() {
+  override render() {
     return (
       <>
         <MenuButton onClick={this.toggleShow(true)} />

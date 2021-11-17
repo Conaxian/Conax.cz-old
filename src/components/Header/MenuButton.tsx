@@ -7,9 +7,9 @@ interface Props {
 }
 
 class MenuButton extends Component {
-  props!: Readonly<Props>;
+  override props!: Readonly<Props>;
 
-  render() {
+  override render() {
     return (
       <IconButton
         color="inherit"

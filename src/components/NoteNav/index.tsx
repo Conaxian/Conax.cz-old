@@ -16,9 +16,9 @@ function makeNoteUrl(subject: string, num: number) {
 }
 
 class NoteNav extends Component {
-  props!: Readonly<Props>;
+  override props!: Readonly<Props>;
 
-  render() {
+  override render() {
     const previous = makeNoteUrl(this.props.subject, this.props.num - 1);
     const next = makeNoteUrl(this.props.subject, this.props.num + 1);
 

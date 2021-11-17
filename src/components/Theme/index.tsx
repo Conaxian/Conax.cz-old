@@ -23,10 +23,10 @@ interface State {
 }
 
 class Theme extends Component {
-  props!: Readonly<Props>;
-  state!: Readonly<State>;
+  override props!: Readonly<Props>;
+  override state!: Readonly<State>;
   toggleTheme: () => void;
-  static contextType = ThemeContext;
+  static override contextType = ThemeContext;
 
   constructor(props: object) {
     super(props);
@@ -45,7 +45,7 @@ class Theme extends Component {
     };
   }
 
-  render() {
+  override render() {
     const themeCore = (
       <ThemeContext.Consumer>
         {(theme) => (

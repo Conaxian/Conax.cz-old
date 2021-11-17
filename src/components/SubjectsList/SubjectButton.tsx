@@ -36,9 +36,9 @@ interface Props {
 }
 
 class SubjectButton extends Component {
-  props!: Readonly<Props>;
+  override props!: Readonly<Props>;
 
-  render() {
+  override render() {
     return (
       <Grid
         item

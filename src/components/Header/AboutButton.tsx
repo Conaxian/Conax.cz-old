@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { Info as InfoIcon } from "@mui/icons-material";
 
 class AboutButton extends Component {
-  render() {
+  override render() {
     return (
       <Button
         href="/about"

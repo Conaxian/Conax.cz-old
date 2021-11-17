@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 
 class About extends Component {
-  render() {
+  override render() {
     return (
       <Container>
         <Grid container spacing={2} sx={{ flexGrow: 1 }}>
