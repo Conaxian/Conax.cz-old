@@ -11,8 +11,20 @@ export default class Vector2 {
     return Math.abs(this.x) + Math.abs(this.y);
   }
 
+  clone() {
+    return new Vector2(this.x, this.y);
+  }
+
   normalize(scale: number = 1) {
-    this.x = (this.x / this.size) * scale;
-    this.y = (this.y / this.size) * scale;
+    if (!this.size) return;
+    const size = this.size;
+    this.x = (this.x / size) * scale;
+    this.y = (this.y / size) * scale;
+  }
+
+  normalized(scale: number = 1) {
+    const vector = this.clone();
+    vector.normalize(scale);
+    return vector;
   }
 }
