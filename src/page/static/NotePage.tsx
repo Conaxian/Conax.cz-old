@@ -11,9 +11,9 @@ interface Props {
 }
 
 class NotePage extends Component {
-  props!: Readonly<Props>;
+  override props!: Readonly<Props>;
 
-  render() {
+  override render() {
     return (
       <>
         <Box

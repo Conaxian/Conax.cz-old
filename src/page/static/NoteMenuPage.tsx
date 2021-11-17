@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import SubjectsList from "../../components/SubjectsList";
 
 class NotePage extends Component {
-  render() {
+  override render() {
     return (
       <Box sx={{ mx: 4, mt: 4 }}>
         <SubjectsList />

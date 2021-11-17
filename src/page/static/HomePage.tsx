@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Grid } from "@mui/material";
 
 class HomePage extends Component {
-  render() {
+  override render() {
     return (
       <Grid
         container
