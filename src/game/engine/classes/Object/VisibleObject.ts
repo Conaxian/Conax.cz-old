@@ -1,17 +1,17 @@
-import { Sprite } from "pixi.js";
+import { Sprite, Texture, Loader } from "pixi.js";
 import type { Container, Ticker } from "pixi.js";
 
 import BaseObject from "./BaseObject";
 import { Coordinates } from "../physics";
 
 export default class VisibleObject extends BaseObject implements Coordinates {
-  sprite: Sprite;
+  sprite!: Sprite;
+  spritePath: string;
   parent?: Container;
 
   constructor(path: string) {
     super();
-    this.sprite = Sprite.from(`game/res/${path}.png`);
-    this.sprite.anchor.set(0.5);
+    this.spritePath = path;
   }
 
   get x() {
@@ -67,6 +67,10 @@ export default class VisibleObject extends BaseObject implements Coordinates {
   }
 
   override async create(ticker: Ticker, parent: Container) {
+    const texture = await this.loadTexture(this.spritePath);
+    this.sprite = new Sprite(texture);
+    this.sprite.anchor.set(0.5);
+
     this.ticker = ticker;
     this.parent = parent;
     parent.addChild(this.sprite);
@@ -75,6 +79,20 @@ export default class VisibleObject extends BaseObject implements Coordinates {
     await this.onShow();
 
     ticker.add(this.onTick, this);
+  }
+
+  private async loadTexture(path: string) {
+    const resource = Loader.shared.resources[path];
+    if (resource) return resource.texture;
+
+    const promise = new Promise<Texture>((resolve) => {
+      Loader.shared.add(path, `game/res/${path}.png`).load((loader, res) => {
+        const texture = res[path].texture!;
+        resolve(texture);
+      });
+    });
+
+    return await promise;
   }
 
   override async destroy() {
